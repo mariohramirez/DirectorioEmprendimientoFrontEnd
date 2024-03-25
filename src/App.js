@@ -5,6 +5,7 @@ import { Footer } from './component/Footer/Footer';
 import { darkTheme } from './Theme/DarkTheme';
 import { CssBaseline } from '@mui/material';
 import Home from './component/Home/Home';
+import Directorio from './component/Directorio/Directorio';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <NavBar />
-      <Home />
+      {/*<Home />*/}
+      <Directorio />
       <Footer />
     </ThemeProvider>
   </div>
