@@ -1,5 +1,6 @@
 import React from "react";
 import EmprendimientoCard from "./EmprendimientoCard";
+import BarraBusqueda from "./BarraBusqueda";
 
 {/*Arreglo de emprendimientos a partir de los cuales se crean las cards*/}
 const emprendimiento = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
@@ -9,10 +10,7 @@ const Directorio = () => {
       {/*Seccion con las card de los emprendimientos*/}
       <section className="relative flex flex-col justify-center items-center">
         {/*Barra de busqueda*/}
-        <div className="flex flex-row gap-5 bg-blue-500 mt-10 p-10">
-          <span>Barra de busqueda</span>
-          <span>Boton de busqueda</span>
-        </div>
+        <BarraBusqueda/>
         <div className="text-black flex flex-row gap-10 pt-10">
           <div className="flex flex-col">
             <span>Programa academico: </span>
