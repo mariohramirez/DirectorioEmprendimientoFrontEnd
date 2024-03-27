@@ -1,10 +1,11 @@
 import React from "react";
+import FiltroNoticia from "./FiltroNoticia";
 
 {
   /*Arreglo de emprendimientos a partir de los cuales se crean las cards*/
 }
 const noticias = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-const filtro = [1, 1, 1];
+const filtro = [1, 1];
 const Noticias = () => {
   return (
     <div className="">
@@ -14,7 +15,7 @@ const Noticias = () => {
           {
             /*Mapeo de los filtros de los emprendimientos*/
             filtro.map((item) => (
-              <div className="text-black">Filtros</div>
+                <FiltroNoticia />
             ))
           }
         </div>
