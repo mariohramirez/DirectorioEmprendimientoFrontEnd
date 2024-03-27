@@ -9,8 +9,8 @@ const DetalleEmprendimiento = () => {
           <div className=" bg-slate-50 w-[10vw]">Logo</div>
         </div>
       </section>
-      <section className="banner relative flex flex-row gap-10 justify-center py-10">
-        <div className="text-black w-[60vw] flex flex-col gap-5">
+      <section className="relative flex flex-col justify-center py-10 lg:flex-row gap-10">
+        <div className="flex-col gap-5 items-center justify-center text-black w-[60vw]">
           <p className="text-center text-2xl text-black lg:text-5xl font-bold">
             Nombre de la empresa
           </p>
@@ -38,7 +38,7 @@ const DetalleEmprendimiento = () => {
             condimentum nibh mattis dolor.
           </p>
         </div>
-        <div className="text-black w-[20vw] bg-green-600 flex flex-col gap-10 items-center py-10">
+        <div className="flex py-10 text-black bg-green-600 w-[80vw] lg:w-[20vw] flex-col gap-10 items-center">
           <div>Seccion detalles</div>
           <div>Seccion fundadores</div>
         </div>
