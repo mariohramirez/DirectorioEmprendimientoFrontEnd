@@ -1,5 +1,6 @@
 import React from "react";
 import CardDetalleEmprendimiento from "./CardDetalleEmprendimiento";
+import CardFundadores from "./CardFundadores";
 
 const DetalleEmprendimiento = () => {
   return (
@@ -11,8 +12,8 @@ const DetalleEmprendimiento = () => {
         </div>
       </section>
       <section className="relative flex flex-col justify-center py-10 lg:flex-row gap-10">
-        <div className="flex-col gap-5 items-center justify-center text-black w-[60vw]">
-          <p className="text-center text-2xl text-black lg:text-5xl font-bold">
+        <div className="flex-col items-center justify-center text-black w-[60vw]">
+          <p className="text-center text-2xl text-black lg:text-5xl font-bold pb-5">
             Nombre de la empresa
           </p>
           <p>
@@ -40,8 +41,8 @@ const DetalleEmprendimiento = () => {
           </p>
         </div>
         <div className="flex text-black w-[80vw] lg:w-[20vw] flex-col gap-10 items-center">
-            <CardDetalleEmprendimiento/>
-          <div>Seccion fundadores</div>
+          <CardDetalleEmprendimiento />
+          <CardFundadores />
         </div>
       </section>
     </div>
