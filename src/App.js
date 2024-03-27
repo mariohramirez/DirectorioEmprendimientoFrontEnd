@@ -9,21 +9,23 @@ import Directorio from './component/Directorio/Directorio';
 import Noticias from './component/Noticias/Noticias';
 import DetalleEmprendimiento from './component/Directorio/Detalle/DetalleEmprendimiento';
 import DetalleNoticia from './component/Noticias/Detalle/DetalleNoticia';
+import { DirectorioRoutes } from './component/Routes/DirectorioRoutes';
 
 function App() {
   return (
-  <div>
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <NavBar />
-      {/*<Home />*/}
-      {/*<Directorio />*/}
-      {/*<Noticias />*/}
-      {/*<DetalleEmprendimiento />*/}
-      <DetalleNoticia />
-      <Footer />
-    </ThemeProvider>
-  </div>
+    <div>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        {/*<NavBar />*/}
+        {/*<Home />*/}
+        {/*<Directorio />*/}
+        {/*<Noticias />*/}
+        {/*<DetalleEmprendimiento />*/}
+        {/*<DetalleNoticia />*/}
+        {/*<Footer />*/}
+        <DirectorioRoutes />
+      </ThemeProvider>
+    </div>
   );
 }
 
