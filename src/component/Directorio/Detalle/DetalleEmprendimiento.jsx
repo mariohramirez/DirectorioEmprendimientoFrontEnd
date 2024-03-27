@@ -1,17 +1,15 @@
 import React from "react";
 import CardDetalleEmprendimiento from "./CardDetalleEmprendimiento";
 import CardFundadores from "./CardFundadores";
+import BannerEmprendimiento from "./BannerEmprendimiento";
 
 const DetalleEmprendimiento = () => {
   return (
     <div>
-      <section className="banner relative flex flex-col justify-center items-center mt-10">
-        <div className="text-black bg-slate-400 w-[84vw] flex flex-col items-center justify-center">
-          Imagen
-          <div className=" bg-slate-50 w-[10vw]">Logo</div>
-        </div>
+      <section className="relative flex flex-col justify-center items-center mt-10">
+        <BannerEmprendimiento  />
       </section>
-      <section className="relative flex flex-col justify-center py-10 lg:flex-row gap-10">
+      <section className="relative flex flex-col justify-center py-14 lg:flex-row gap-10">
         <div className="flex-col items-center justify-center text-black w-[60vw]">
           <p className="text-center text-2xl text-black lg:text-5xl font-bold pb-5">
             Nombre de la empresa

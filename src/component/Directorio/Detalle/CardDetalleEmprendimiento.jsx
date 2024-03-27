@@ -10,7 +10,7 @@ const CardDetalleEmprendimiento = () => {
     >
       <div className="relative p-4 flex flex-col justify-between items-center">
         <img
-          className="w-auto h-[5rem] rounded-t-md object-cover"
+          className="w-auto h-[5rem] object-cover"
           src="/png/Logos/logoipsum-300.png"
           alt="Logo"
         />
