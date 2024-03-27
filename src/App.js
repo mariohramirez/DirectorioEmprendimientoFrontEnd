@@ -8,6 +8,7 @@ import Home from './component/Home/Home';
 import Directorio from './component/Directorio/Directorio';
 import Noticias from './component/Noticias/Noticias';
 import DetalleEmprendimiento from './component/Directorio/Detalle/DetalleEmprendimiento';
+import DetalleNoticia from './component/Noticias/Detalle/DetalleNoticia';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       {/*<Home />*/}
       {/*<Directorio />*/}
       {/*<Noticias />*/}
-      <DetalleEmprendimiento />
+      {/*<DetalleEmprendimiento />*/}
+      <DetalleNoticia />
       <Footer />
     </ThemeProvider>
   </div>
