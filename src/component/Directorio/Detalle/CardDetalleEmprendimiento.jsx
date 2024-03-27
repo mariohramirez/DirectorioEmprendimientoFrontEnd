@@ -2,6 +2,7 @@ import { Card} from "@mui/material";
 import React from "react";
 import { WhatsAppIcon, LinkedIcon } from "../../Iconos";
 
+{/*Card para el detalle del emprendimiento*/}
 const CardDetalleEmprendimiento = () => {
   return (
     <Card
