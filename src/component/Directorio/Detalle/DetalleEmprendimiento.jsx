@@ -1,4 +1,5 @@
 import React from "react";
+import CardDetalleEmprendimiento from "./CardDetalleEmprendimiento";
 
 const DetalleEmprendimiento = () => {
   return (
@@ -38,8 +39,8 @@ const DetalleEmprendimiento = () => {
             condimentum nibh mattis dolor.
           </p>
         </div>
-        <div className="flex py-10 text-black bg-green-600 w-[80vw] lg:w-[20vw] flex-col gap-10 items-center">
-          <div>Seccion detalles</div>
+        <div className="flex text-black w-[80vw] lg:w-[20vw] flex-col gap-10 items-center">
+            <CardDetalleEmprendimiento/>
           <div>Seccion fundadores</div>
         </div>
       </section>
