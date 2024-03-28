@@ -1,6 +1,6 @@
-import { Button, Typography } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import React from "react";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field } from "formik";
 
 const initialValues = {
   email: "",
@@ -8,15 +8,18 @@ const initialValues = {
 };
 
 export const LoginForm = () => {
+  
+  const handleSubmit = () => {};
+
   return (
-    <div>
+    <div >
       <Typography variant="h5" className="text-center">
         Iniciar Sesión
       </Typography>
-      <Formik>
-        <Form>
+      <Formik  onSubmit={handleSubmit} initialValues={initialValues}>
+        <Form className="flex flex-col gap-5 justify-center items-center text-black mt-5">
           <Field
-            as={TextFlied}
+            as={TextField}
             name="correo"
             label="Correo"
             fullWidth
@@ -24,7 +27,7 @@ export const LoginForm = () => {
             margin="normal"
           />
           <Field
-            as={TextFlied}
+            as={TextField}
             name="contraseña"
             label="Contraseña"
             fullWidth
@@ -32,7 +35,7 @@ export const LoginForm = () => {
             margin="normal"
           />
           <Button
-            sx={{ mt: 2, padding: "" }}
+            sx={{padding: "1rem", backgroundColor: "#026937", color: "white"}}
             fullWdith
             type="submit"
             variant="contained"

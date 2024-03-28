@@ -10,7 +10,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
+  bgcolor: "black.main",
   outline: "none",
   boxShadow: 24,
   p: 4,
@@ -24,7 +24,9 @@ export const Auth = () => {
   };
   return (
     <>
-      <Modal open={location.pathname === "/login"} onClose={handleOnCLose}>
+      <Modal open={location.pathname === "/login"
+      } 
+      onClose={handleOnCLose}>
         <Box sx={style}>
           {location.pathname === "/login" ? <LoginForm />: null}
         </Box>

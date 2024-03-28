@@ -15,7 +15,7 @@ export const NavBar = () => {
   const navigate = useNavigate();
   const handleNavigate = (item) => {
     if (item.title === "Inicio") {
-        navigate("/");
+      navigate("/");
     } else {
       navigate(`/${item.title.toLowerCase()}`);
     }
@@ -49,6 +49,7 @@ export const NavBar = () => {
           {/*Boton de iniciar sesion, la transicion es para el hover, el estilo
                         es para tener una sombra bajo el boton personalizada*/}
           <button
+          onClick={() => navigate("/login")}
             className="flex items-center bg-[#F9A12C] text-black
                         text-lg transition duration-300 ease-in-out hover:bg-[#ef434d] hover:text-white"
             style={{ boxShadow: "0px 4px 5px 0px rgba(0, 0, 0, 0.7)" }}
@@ -60,7 +61,13 @@ export const NavBar = () => {
               <span>
                 <PermIdentityIcon sx={{ fontSize: "20px" }} />
               </span>
-              <span className="font-roboto-slab text-base">Ingresar</span>
+              {false ? (
+                <span className="font-roboto-slab text-base">
+                  Cerrar sesion
+                </span>
+              ) : (
+                <span className="font-roboto-slab text-base">Ingresar</span>
+              )}
             </div>
           </button>
         </div>

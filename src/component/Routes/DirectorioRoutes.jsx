@@ -8,6 +8,7 @@ import Directorio from "../Directorio/Directorio";
 import Noticias from "../Noticias/Noticias";
 import DetalleEmprendimiento from "../Directorio/Detalle/DetalleEmprendimiento";
 import DetalleNoticia from "../Noticias/Detalle/DetalleNoticia";
+import Auth from "../Auth/Auth";
 
 export const DirectorioRoutes = () => {
   return (
@@ -21,6 +22,7 @@ export const DirectorioRoutes = () => {
         <Route path="/noticias/detalle" element={<DetalleNoticia />} />
       </Routes>
       <Footer />
+      <Auth />
     </div>
   );
 };
