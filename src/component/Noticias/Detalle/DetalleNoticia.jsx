@@ -1,10 +1,13 @@
 import React from "react";
 import SellIcon from "@mui/icons-material/Sell";
 import CardNoticiaRelacionada from "./CardNoticiaRelacionada";
+import { useNavigate } from "react-router-dom";
+import Conexiones from "./Conexiones";
 
 const etiquetas = [1, 1, 1];
 const noticiasRelacionadas = [1, 1, 1];
 const DetalleNoticia = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative flex flex-col justify-center py-14 lg:flex-row gap-10">
       <div className="flex flex-col gap-5 text-black w-[60vw]">
@@ -16,10 +19,15 @@ const DetalleNoticia = () => {
           src="/jpg/FotosMiniatura/fotoNoticia.jpg"
           alt="Foto"
         />
-        <div className="flex flex-row justify-between font-semibold border-t-2 border-b-2 border-black p-3">
-          <span className="text-lg">Fecha de publicacion</span>
-          <span className="text-lg text-[#026937]">Autor</span>
-          <span>Conexiones</span>
+        <div className="flex flex-row justify-between border-t-2 border-b-2 border-black p-3 text-lg">
+          <div className="flex flex-row gap-5 font-semibold justify-center items-center">
+            <span>Fecha de publicacion</span>
+            <span className="text-[#026937]">Autor</span>
+          </div>
+          <div className="flex flex-row gap-2 justify-center items-center">
+            <span>Compartir: </span>
+            <Conexiones />
+          </div>
         </div>
         <p className="text-justify">
           Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante
@@ -46,7 +54,10 @@ const DetalleNoticia = () => {
         <div className="flex flex-row gap-5  border-t-2 border-b-2 border-black p-3 text-lg ">
           <span className="font-semibold">Etiquetas:</span>
           {etiquetas.map((item) => (
-            <div className="flex flex-row gap-1">
+            <div
+              onClick={() => navigate("/noticias")}
+              className=" cursor-pointer flex flex-row gap-1"
+            >
               <span>
                 <SellIcon style={{ color: "#026937" }} />
               </span>
@@ -56,11 +67,10 @@ const DetalleNoticia = () => {
         </div>
       </div>
       <div className="flex text-black w-[80vw] lg:w-[20vw] flex-col gap-5">
-        <span className="text-2xl lg:text-5xl font-bold">
-          Actualidad
-        </span>
-        {noticiasRelacionadas.map((item) => (<CardNoticiaRelacionada />
-          ))}
+        <span className="text-2xl lg:text-5xl font-bold">Actualidad</span>
+        {noticiasRelacionadas.map((item) => (
+          <CardNoticiaRelacionada />
+        ))}
       </div>
     </section>
   );

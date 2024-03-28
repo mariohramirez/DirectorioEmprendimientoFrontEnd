@@ -1,7 +1,9 @@
 import { Card } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const CardNoticia = () => {
+  const navigate = useNavigate();
   return (
     <Card
       className="shadow-md rounded-lg  w-[25rem] "
@@ -29,7 +31,7 @@ const CardNoticia = () => {
         </div>
       </div>
       <div className=" bg-blue-500 p-2 lg:flex flex-col justify-center items-center">
-        <p>Leer mas</p>
+        <p onClick={()=>navigate("/noticias/detalle")} className=" cursor-pointer hover:text-black">Leer mas</p>
       </div>
     </Card>
   );
