@@ -1,8 +1,11 @@
-import { Card} from "@mui/material";
+import { Card } from "@mui/material";
 import React from "react";
 import { WhatsAppIcon, LinkedIcon } from "../../Iconos";
+import { motion } from "framer-motion";
 
-{/*Card para el detalle del emprendimiento*/}
+{
+  /*Card para el detalle del emprendimiento*/
+}
 const CardDetalleEmprendimiento = () => {
   return (
     <Card
@@ -21,18 +24,30 @@ const CardDetalleEmprendimiento = () => {
         <p className="text-sm">Informacion de empresa</p>
         <p className="text-sm">Informacion de empresa</p>
         <p className="text-sm">Informacion de empresa</p>
-        <div className="flex flex-row gap-10 pt-2 justify-center items-center">
-            <span className=" w-10">
-              <WhatsAppIcon />
-            </span>
-            <span className=" w-10">
-              <LinkedIcon/>
-            </span>
-        </div>
+        <nav className="flex flex-row gap-10 pt-2 justify-center items-center">
+          <motion.a
+            href="https://wa.me/573002222222"
+            target="_blank"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.9 }}
+            className="w-9"
+          >
+            <WhatsAppIcon />
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com"
+            target="_blank"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.9 }}
+            className="w-9"
+          >
+            <LinkedIcon />
+          </motion.a>
+        </nav>
       </div>
-      <div className=" bg-[#306A9F] p-2 lg:flex flex-col justify-center items-center">
-        <p>Visitar sitio web</p>
-      </div>
+      <nav className=" bg-[#306A9F] p-2 lg:flex flex-col justify-center items-center">
+        <a href="https://www.sitiogenerico.com" target="_blank">Visitar sitio web</a>
+      </nav>
     </Card>
   );
 };
