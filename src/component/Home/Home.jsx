@@ -34,9 +34,9 @@ const Home = () => {
             </span>
           </div>
           <div className="flex flex-row gap-[20px] justify-between py-10">
-            <RoleButton text="Quiero Emprender" />
-            <RoleButton text="Soy Emprendedor/Empresario" />
-            <RoleButton text="Soy Profesor" />
+            <RoleButton text="Quiero Emprender" url="https://forms.office.com/pages/responsepage.aspx?id=IefhmYRxjkmK_7KtTlPBwke8p-azwIdPkDYFCIUGxKZUOUQzVFdaUVBJS0E0N1pBRkIwQlVOVzJOSyQlQCN0PWcu"/>
+            <RoleButton text="Soy Emprendedor/Empresario" url="https://forms.office.com/pages/responsepage.aspx?id=IefhmYRxjkmK_7KtTlPBwke8p-azwIdPkDYFCIUGxKZUOUQzVFdaUVBJS0E0N1pBRkIwQlVOVzJOSyQlQCN0PWcu"/>
+            <RoleButton text="Soy Profesor" url="/"/>
           </div>
         </div>
       </section>

@@ -27,9 +27,10 @@ export const NavBar = () => {
       <div className="lg:flex items-center ">
         {/*Logo de la Universidad de Antioquia*/}
         <img
+          onClick={() => navigate("/")}
           src="/png/LogoUdea.png"
           alt="Universidad de Antioquia"
-          className="h-auto w-[250px]"
+          className="cursor-pointer h-auto w-[250px]"
         />
 
         {/*Menu de navegacion*/}
@@ -39,7 +40,7 @@ export const NavBar = () => {
               onClick={() => handleNavigate(item)}
               className="cursor-pointer"
             >
-              <span>{item.title}</span>
+              <span className=" hover:border-b-2">{item.title}</span>
             </div>
           ))}
         </div>
@@ -49,7 +50,7 @@ export const NavBar = () => {
           {/*Boton de iniciar sesion, la transicion es para el hover, el estilo
                         es para tener una sombra bajo el boton personalizada*/}
           <button
-          onClick={() => navigate("/login")}
+            onClick={() => navigate("/login")}
             className="flex items-center bg-[#F9A12C] text-black
                         text-lg transition duration-300 ease-in-out hover:bg-[#ef434d] hover:text-white"
             style={{ boxShadow: "0px 4px 5px 0px rgba(0, 0, 0, 0.7)" }}
