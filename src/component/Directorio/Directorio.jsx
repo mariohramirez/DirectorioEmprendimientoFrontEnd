@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import EmprendimientoCard from "./EmprendimientoCard";
 import BarraBusqueda from "./BarraBusqueda";
 import FiltroEmprendimiento from "./FiltroEmprendimiento";
+import { useDispatch } from "react-redux";
+import { retrieveEmprendimientos } from "../State/Emprendimiento/Action";
 
 {
   /*Arreglo de emprendimientos a partir de los cuales se crean las cards*/
@@ -9,6 +11,12 @@ import FiltroEmprendimiento from "./FiltroEmprendimiento";
 const emprendimiento = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 const filtro = [1, 1, 1];
 const Directorio = () => {
+
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+
+  useEffect(() => {dispatch(retrieveEmprendimientos(jwt))},[])
+
   return (
     <div className="">
       {/*Seccion con las card de los emprendimientos*/}
