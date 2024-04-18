@@ -5,6 +5,7 @@ const initialState = {
     emprendimiento: null,
     loading: false,
     error: null,
+    
 };
 
 const emprendimientoReducer = (state = initialState, action) => {

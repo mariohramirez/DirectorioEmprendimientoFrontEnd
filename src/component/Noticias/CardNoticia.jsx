@@ -31,7 +31,7 @@ const CardNoticia = () => {
         </div>
       </div>
       <div className=" bg-blue-500 p-2 lg:flex flex-col justify-center items-center">
-        <p onClick={()=>navigate("/noticias/detalle")} className=" cursor-pointer hover:text-black">Leer mas</p>
+        <p onClick={()=>navigate("/novedades/detalle")} className=" cursor-pointer hover:text-black">Leer mas</p>
       </div>
     </Card>
   );

@@ -4,8 +4,14 @@ import { WhatsAppIcon, LinkedIcon } from "../Iconos";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const EmprendimientoCard = () => {
+const EmprendimientoCard = ({ item }) => {
   const navigate = useNavigate();
+
+  const extractWhatsapp = (url) => {
+    
+    return url;
+  };
+
   return (
     <Card
       className="shadow-md rounded-lg  w-[18rem] "
@@ -19,18 +25,23 @@ const EmprendimientoCard = () => {
         />
       </div>
       <div className="bg-[#026937] p-4 textPart lg:flex flex-col justify-between items-center">
-        <p className="font-semibold text-lg">Nombre de la empresa</p>
-        <p className="text-sm">Informacion de empresa</p>
+        <p className="font-semibold text-lg">{item.nombre}</p>
+        <p className="text-sm text-center">{item.resumen}</p>
         <nav className="flex flex-row gap-10 pt-2">
-          <motion.a
-            href="https://wa.me/573002222222"
-            target="_blank"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.9 }}
-            className="w-9"
-          >
-            <WhatsAppIcon />
-          </motion.a>
+          {item.informacionDeContacto.whatsapp && (
+            <motion.a
+              href={`https://wa.me/${extractWhatsapp(
+                item.informacionDeContacto.whatsapp
+              )}`}
+              target="_blank"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-9"
+            >
+              <WhatsAppIcon />
+            </motion.a>
+          )}
+          {item.informacionDeContacto.linkedin &&(
           <motion.a
             href="https://www.linkedin.com"
             target="_blank"
@@ -39,7 +50,7 @@ const EmprendimientoCard = () => {
             className="w-9"
           >
             <LinkedIcon />
-          </motion.a>
+          </motion.a>)}
         </nav>
       </div>
       <div className=" bg-[#137598] p-2 lg:flex flex-col justify-center items-center">
