@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import EmprendimientoCard from "./EmprendimientoCard";
 import BarraBusqueda from "./BarraBusqueda";
 import FiltroEmprendimiento from "./FiltroEmprendimiento";
+import { useDispatch, useSelector } from "react-redux";
+import { retrieveEmprendimientos } from "../State/Emprendimiento/Action";
 
 {
   /*Arreglo de emprendimientos a partir de los cuales se crean las cards*/
 }
-const emprendimiento = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+const emprendimientos = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 const filtro = [1, 1, 1];
 const Directorio = () => {
+
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+  //const {emprendimiento} = useSelector((state) => state.emprendimiento);
+  const {emprendimiento} = useSelector(store => store);
+  console.log("Emprendimiento: ",emprendimiento);
+
+  useEffect(() => {dispatch(retrieveEmprendimientos(jwt))},[])
+
   return (
     <div className="">
       {/*Seccion con las card de los emprendimientos*/}
@@ -27,9 +38,12 @@ const Directorio = () => {
         <div className="flex flex-wrap items-center justify-around gap-5 py-10 px-[50px]">
           {
             /*Mapeo de los emprendimientos donde cada item crea una card de emprendimiento*/
-            emprendimiento.map((item) => (
-              <EmprendimientoCard />
+            emprendimiento.emprendimientos.map((item) => (
+              <EmprendimientoCard item={item}/>
+
+              //<span>{item.nombre}</span>
             ))
+            
           }
         </div>
       </section>

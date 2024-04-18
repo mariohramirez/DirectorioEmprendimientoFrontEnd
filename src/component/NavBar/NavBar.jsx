@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 const menu = [
   { title: "Inicio" },
   { title: "Directorio" },
-  { title: "Noticias" },
-  { title: "Convocatorias" },
-  { title: "Eventos" },
+  { title: "Novedades" },
+ /* { title: "Convocatorias" },
+  { title: "Eventos" },*/
   { title: "Servicios" },
 ];
 
