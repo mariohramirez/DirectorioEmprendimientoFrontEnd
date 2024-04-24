@@ -55,7 +55,7 @@ const DetalleNoticia = () => {
           <span className="font-semibold">Etiquetas:</span>
           {etiquetas.map((item) => (
             <div
-              onClick={() => navigate("/noticias")}
+              onClick={() => navigate("/novedades")}
               className=" cursor-pointer flex flex-row gap-1"
             >
               <span>
