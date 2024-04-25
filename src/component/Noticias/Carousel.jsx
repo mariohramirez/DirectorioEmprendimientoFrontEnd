@@ -1,7 +1,11 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 
-function Carousel({ children: slides, autoSlide = false, autoSlideInterval = 3000}) {
+function Carousel({
+  children: slides,
+  autoSlide = false,
+  autoSlideInterval = 3000,
+}) {
   const [curr, setCurrent] = useState(0);
 
   const prev = () =>
@@ -9,11 +13,11 @@ function Carousel({ children: slides, autoSlide = false, autoSlideInterval = 300
   const next = () =>
     setCurrent((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
 
-    useEffect(() => {
-        if (!autoSlide) return
-        const slideInterval = setInterval(next, autoSlideInterval)
-        return () => clearInterval(slideInterval)
-    },[])
+  useEffect(() => {
+    if (!autoSlide) return;
+    const slideInterval = setInterval(next, autoSlideInterval);
+    return () => clearInterval(slideInterval);
+  }, []);
 
   return (
     <div className="w-[80vw] z-10">
@@ -33,21 +37,25 @@ function Carousel({ children: slides, autoSlide = false, autoSlideInterval = 300
               <div className="absolute inset-0 flex items-center justify-between p-4">
                 <button
                   onClick={prev}
-                  className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
+                  className="p-1 rounded-full shadow bg-black/50 border-2 border-[#026937]  text-[#026937] hover:bg-[#026937] hover:text-white"
                 >
-                  <ChevronLeft size={40} />
+                  <ChevronLeft size={500} />
                 </button>
                 <button
                   onClick={next}
-                  className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
+                  className="p-1 rounded-full shadow bg-black/50 border-2 border-[#026937]  text-[#026937] hover:bg-[#026937] hover:text-white"
                 >
-                  <ChevronRight size={40} />
+                  <ChevronRight size={500} />
                 </button>
               </div>
               <div className="absolute bottom-4 right-0 left-0">
                 <div className="flex items-center justify-center gap-2">
-                    {slides.map((_, index) => (<div className={`transition-all w-3 h-3 bg-white rounded-full
-                    ${curr===index? "p-2" : "bg-opacity-50"}`}/>))}
+                  {slides.map((_, index) => (
+                    <div
+                      className={`transition-all w-3 h-3 bg-[#026937] rounded-full
+                    ${curr === index ? "p-2" : "bg-opacity-50"}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
