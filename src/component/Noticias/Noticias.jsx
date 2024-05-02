@@ -20,7 +20,7 @@ const Noticias = () => {
       <section className="relative flex flex-col justify-center items-center">
         <Carousel autoSlide={true}>
           {slides.map((slide) => (
-            <img className="w-[80vw]" src={slide} />
+            <img className="object-cover" src={slide} />
           ))}
         </Carousel>
         <div
