@@ -13,6 +13,12 @@ function Carousel({
   const next = () =>
     setCurrent((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
 
+  const slideTexts = [
+    "Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante curabitur accumsan sodales nibh. Sed purus tellus id    aenean volutpat. Diam turpis convallis at ut fringilla elementum ornare sit. Viverra sagittis sapien mauris nibh. At tincidunt gravida dolor aliquet magna in praesent. 1",
+    "Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante curabitur accumsan sodales nibh. Sed purus tellus id    aenean volutpat. Diam turpis convallis at ut fringilla elementum ornare sit. Viverra sagittis sapien mauris nibh. At tincidunt gravida dolor aliquet magna in praesent. 2",
+    "Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante curabitur accumsan sodales nibh. Sed purus tellus id    aenean volutpat. Diam turpis convallis at ut fringilla elementum ornare sit. Viverra sagittis sapien mauris nibh. At tincidunt gravida dolor aliquet magna in praesent. 3",
+  ];
+
   useEffect(() => {
     if (!autoSlide) return;
     const slideInterval = setInterval(next, autoSlideInterval);
@@ -27,7 +33,7 @@ function Carousel({
         </div>
         <div className=" font-bold lg: relative flex flex-col justify-center items-center rounded-b-md">
           <div>
-            <div className="overflow-hidden relative">
+            <div className="overflow-hidden relative w-[80vw] h-[25rem]">
               <div
                 className="flex transition-trasnform ease-out duration-500"
                 style={{ transform: `translateX(-${curr * 100}%)` }}
@@ -48,7 +54,7 @@ function Carousel({
                   <ChevronRight size={500} />
                 </button>
               </div>
-              <div className="absolute bottom-4 right-0 left-0">
+              <div className="absolute bottom-20 right-0 left-0">
                 <div className="flex items-center justify-center gap-2">
                   {slides.map((_, index) => (
                     <div
@@ -58,37 +64,20 @@ function Carousel({
                   ))}
                 </div>
               </div>
+              <div className="absolute bottom-0 right-0 left-0">
+                <div className=" bg-[#026937] bg-opacity-50 py-4 text-center rounded-b-md lg:w-[80vw] px-10 z-20">
+                  <div className="text-sm">{slideTexts[curr]}</div>
+                </div>
+              </div>
             </div>
-            <img
+            {/*<img
               className="w-[80vw] h-[20rem] object-cover z-10"
               src="/jpg/FotosMiniatura/fotoNoticia.jpg"
               alt="Foto"
-            />
+                  />*/}
             <div className="absolute inset-y-[0rem] inset-x-[0rem] bg-[#026937] bg-opacity-50 w-full -z-10">
-              <div
-                className="absolute bg-white rounded-full w-[3rem] h-[3rem]
-                   text-black inset-x-[2rem] inset-y-[9rem]"
-              >
-                Boton
-              </div>
               <span className="text-5xl">Titulo novedad</span>
-              <div
-                className="absolute bg-white rounded-full w-[3rem] h-[3rem] inset-y-[9rem] inset-x-[15rem]
-                   text-black lg: left-[60rem] right-96 end-4"
-              >
-                Boton
-              </div>
-              <div>Estados</div>
             </div>
-          </div>
-          <div className=" bg-[#026937] bg-opacity-50 py-4 text-center rounded-b-md lg:w-[80vw] px-10 z-20">
-            <span className=" text-sm w-[60vw]">
-              Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante
-              curabitur accumsan sodales nibh. Sed purus tellus id aenean
-              volutpat. Diam turpis convallis at ut fringilla elementum ornare
-              sit. Viverra sagittis sapien mauris nibh. At tincidunt gravida
-              dolor aliquet magna in praesent.{" "}
-            </span>
           </div>
         </div>
       </div>
