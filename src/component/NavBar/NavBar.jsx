@@ -6,9 +6,10 @@ const menu = [
   { title: "Inicio" },
   { title: "Directorio" },
   { title: "Novedades" },
- /* { title: "Convocatorias" },
+  /* { title: "Convocatorias" },
   { title: "Eventos" },*/
   { title: "Servicios" },
+  { title: "Administracion" },
 ];
 
 export const NavBar = () => {
@@ -16,13 +17,15 @@ export const NavBar = () => {
   const handleNavigate = (item) => {
     if (item.title === "Inicio") {
       navigate("/");
+    } else if (item.title === "Administracion") {
+      navigate("/admin");
     } else {
       navigate(`/${item.title.toLowerCase()}`);
     }
   };
   return (
     //En pantallas pequenas el tamano sera de px-5 y en pantallas grandes sera de px-20
-    <nav className="px-5 z-50 py-5 bg-[#8DC63F] lg:px-10 flex items-center justify-center ">
+    <nav className="px-5 z-50 py-5 bg-[#026937] lg:px-10 flex items-center justify-center ">
       {/*Div conteniendo cada uno de los elementos del NavBar*/}
       <div className="lg:flex items-center ">
         {/*Logo de la Universidad de Antioquia*/}
