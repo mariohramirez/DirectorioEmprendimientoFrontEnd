@@ -9,6 +9,9 @@ import Noticias from "../Noticias/Noticias";
 import DetalleEmprendimiento from "../Directorio/Detalle/DetalleEmprendimiento";
 import DetalleNoticia from "../Noticias/Detalle/DetalleNoticia";
 import Auth from "../Auth/Auth";
+import AdminDashboard from "../Admin/AdminDashboard";
+import AdminEmprendimientos from "../Admin/Listas/AdminEmprendimientos";
+import Emprendimiento from "../Admin/Emprendimiento/Emprendimiento";
 
 export const DirectorioRoutes = () => {
   return (
@@ -21,6 +24,12 @@ export const DirectorioRoutes = () => {
         <Route path="/novedades" element={<Noticias />} />
         <Route path="/novedades/detalle" element={<DetalleNoticia />} />
         <Route path="/novedades/detalle" element={<DetalleNoticia />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route
+          path="/admin/emprendimientos"
+          element={<AdminEmprendimientos />}
+        />
+        <Route path="/admin/emprendimientos/emprendimiento/:id" element={<Emprendimiento/>} />
       </Routes>
       <Footer />
       <Auth />
