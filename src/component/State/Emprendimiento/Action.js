@@ -18,15 +18,11 @@ import {
     DELETE_ALL_EMPRENDIMIENTOS
 } from "./ActionType";
 
-export const retrieveEmprendimientos = (token) => {
+export const retrieveEmprendimientos = () => {
     return async (dispatch) => {
         dispatch({type: RETRIEVE_EMPRENDIMIENTOS_REQUEST});
         try {
-            const { data } = await api.get("/api/emprendimientos", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const { data } = await api.get("/api/emprendimientos",);
             dispatch({type: RETRIEVE_EMPRENDIMIENTOS_SUCCESS, payload: data});
             console.log("Todos los emprendimientos", data);
         } catch (error) {
