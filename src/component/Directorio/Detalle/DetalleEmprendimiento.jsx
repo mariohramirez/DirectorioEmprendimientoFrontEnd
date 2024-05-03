@@ -4,7 +4,6 @@ import CardFundadores from "./CardFundadores";
 import BannerEmprendimiento from "./BannerEmprendimiento";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientoById } from "../../State/Emprendimiento/Action";
-import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
 import { useParams } from "react-router-dom";
 
 const DetalleEmprendimiento = () => {

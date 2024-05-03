@@ -9,12 +9,11 @@ const filtro = [1, 1, 1];
 const Directorio = () => {
 
   const dispatch = useDispatch();
-  const jwt = localStorage.getItem("jwt");
   //const {emprendimiento} = useSelector((state) => state.emprendimiento);
   const {emprendimiento} = useSelector(store => store);
   console.log("Emprendimiento: ",emprendimiento);
 
-  useEffect(() => {dispatch(retrieveEmprendimientos(jwt))},[])
+  useEffect(() => {dispatch(retrieveEmprendimientos())},[])
 
   return (
     <div className="">

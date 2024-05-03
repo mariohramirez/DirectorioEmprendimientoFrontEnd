@@ -2,31 +2,60 @@ import React from "react";
 import MenuAdmin from "../Menu/MenuAdmin";
 import DataTable from "./DataTable/DataTable";
 import Add from "./Add/Add";
-
-const rows = [
-  { id: 1, nombre: "Hello", formalizada: true },
-  { id: 2, nombre: "DataGridPro", formalizada: false },
-  { id: 3, nombre: "MUI", formalizada: false },
-];
-
-const columns = [
-  { field: "id", headerName: "ID", width: 50 },
-  { field: "nombre", headerName: "Nombre", width: 150 },
-  {
-    field: "formalizada",
-    headerName: "Formalizada",
-    width: 100,
-    type: "boolean",
-  },
-  { field: "sector", headerName: "Sector", width: 150 },
-  { field: "servicio", headerName: "Servicio", width: 150 },
-  { field: "fundador", headerName: "Fundador", width: 150 },
-  { field: "etapa", headerName: "Etapa", width: 150 },
-  { field: "fecha", headerName: "Fecha de registro", width: 150 },
-];
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
 
 const AdminEmprendimientos = () => {
+  const dispatch = useDispatch();
+  //const {emprendimiento} = useSelector((state) => state.emprendimiento);
+  const { emprendimiento } = useSelector((store) => store);
+  console.log("Emprendimiento: ", emprendimiento);
+
+  useEffect(() => {
+    dispatch(retrieveEmprendimientos());
+  }, []);
+
   const [open, setOpen] = React.useState(false);
+
+  console.log("Emprendimiento aca: ", emprendimiento.emprendimientos[0]);
+
+  // Seleccionar un emprendimiento del arreglo
+  const emprendimientoEjemplo = emprendimiento.emprendimientos[0];
+
+  console.log("Emprendimiento ejemplo: ", emprendimientoEjemplo);
+
+  const columnasIgnoradas = [
+    "resumen",
+    "nombreLogo",
+    "descripcion",
+    "informacionDeContacto",
+  ]; // Agrega aquí las claves que deseas ignorar
+
+  // Determinar las columnas basadas en las claves del emprendimiento seleccionado, ignorando las columnas especificadas
+  const columnsTabla = emprendimientoEjemplo
+    ? Object.keys(emprendimientoEjemplo)
+        .filter((key) => !columnasIgnoradas.includes(key))
+        .map((key) => ({
+          field: key,
+          headerName: key.charAt(0).toUpperCase() + key.slice(1),
+          width: 150,
+        }))
+    : [];
+
+  // Determinar las columnas basadas en las claves del emprendimiento seleccionado, ignorando las columnas especificadas
+  const columns = emprendimientoEjemplo
+    ? Object.keys(emprendimientoEjemplo).map((key) => ({
+        field: key,
+        headerName: key.charAt(0).toUpperCase() + key.slice(1),
+        width: 150,
+      }))
+    : [];
+
+  const rows = emprendimiento.emprendimientos.map((emprendimiento) => ({
+    ...emprendimiento,
+    id: emprendimiento.id,
+  }));
 
   return (
     <section className="relative flex">
@@ -47,14 +76,15 @@ const AdminEmprendimientos = () => {
           >
             <div className="mx-4 my-2 flex flex-row gap-[10px] items-center justify-center">
               {/*Icono de usuario usando material UI Icons*/}
-              <span>
-              </span>
+              <span></span>
 
-                <span className="font-roboto-slab text-base">Agregar nuevo emprendimiento</span>
+              <span className="font-roboto-slab text-base">
+                Agregar nuevo emprendimiento
+              </span>
             </div>
           </button>
         </div>
-        <DataTable slug="emprendimiento" columns={columns} rows={rows} />
+        <DataTable slug="emprendimiento" columns={columnsTabla} rows={rows} />
         {open && (
           <Add slug="emprendimiento" columns={columns} setOpen={setOpen} />
         )}

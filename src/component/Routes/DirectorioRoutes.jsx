@@ -13,6 +13,8 @@ import AdminDashboard from "../Admin/AdminDashboard";
 import AdminEmprendimientos from "../Admin/Listas/AdminEmprendimientos";
 import Emprendimiento from "../Admin/Emprendimiento/Emprendimiento";
 import Servicios from "../Servicios/Servicios";
+import AdminEmprendedores from "../Admin/Listas/AdminEmprendedores";
+import Emprendedor from "../Admin/Emprendedor/Emprendedor";
 
 export const DirectorioRoutes = () => {
   return (
@@ -21,7 +23,10 @@ export const DirectorioRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/directorio" element={<Directorio />} />
-        <Route path="/directorio/emprendimiento/:nombreEmprendimiento/:id" element={<DetalleEmprendimiento />} />
+        <Route
+          path="/directorio/emprendimiento/:nombreEmprendimiento/:id"
+          element={<DetalleEmprendimiento />}
+        />
         <Route path="/novedades" element={<Noticias />} />
         <Route path="/novedades/detalle" element={<DetalleNoticia />} />
         <Route path="/servicios" element={<Servicios />} />
@@ -30,7 +35,16 @@ export const DirectorioRoutes = () => {
           path="/admin/emprendimientos"
           element={<AdminEmprendimientos />}
         />
-        <Route path="/admin/emprendimientos/emprendimiento/:id" element={<Emprendimiento/>} />
+        <Route path="/admin/emprendedores" element={<AdminEmprendedores />} />
+        <Route
+          path="/admin/emprendedores/emprendedores/:id"
+          element={<Emprendedor />}
+        />
+
+        <Route
+          path="/admin/emprendimientos/emprendimiento/:id"
+          element={<Emprendimiento />}
+        />
       </Routes>
       <Footer />
       <Auth />

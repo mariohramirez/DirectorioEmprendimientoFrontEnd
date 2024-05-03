@@ -1,4 +1,4 @@
-export const emprendimiento = {
+export const emprende = {
     id: 1,
     titulo: "Emprendimiento",
     informacion: { nombreEmprendimiento: "Hola", correo: "Hola" },
