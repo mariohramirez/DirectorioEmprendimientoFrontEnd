@@ -5,10 +5,6 @@ import FiltroEmprendimiento from "./FiltroEmprendimiento";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientos } from "../State/Emprendimiento/Action";
 
-{
-  /*Arreglo de emprendimientos a partir de los cuales se crean las cards*/
-}
-const emprendimientos = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 const filtro = [1, 1, 1];
 const Directorio = () => {
 

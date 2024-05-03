@@ -1,9 +1,26 @@
-import React from "react";
+import React, {useEffect} from "react";
 import CardDetalleEmprendimiento from "./CardDetalleEmprendimiento";
 import CardFundadores from "./CardFundadores";
 import BannerEmprendimiento from "./BannerEmprendimiento";
+import { useDispatch, useSelector } from "react-redux";
+import { retrieveEmprendimientoById } from "../../State/Emprendimiento/Action";
+import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
+import { useParams } from "react-router-dom";
 
 const DetalleEmprendimiento = () => {
+
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+  const {emprendimiento} = useSelector(store => store);
+  console.log("Emprendimiento: ",emprendimiento);
+
+  const {id} = useParams();
+
+  console.log("id", id);
+
+
+  useEffect(() => {dispatch(retrieveEmprendimientoById({emprendimientoId: id, }))},[])
+
   return (
     <div>
       <section className="relative flex flex-col justify-center items-center mt-10">
@@ -11,9 +28,7 @@ const DetalleEmprendimiento = () => {
       </section>
       <section className="relative flex flex-col justify-center py-14 lg:flex-row gap-10">
         <div className="flex-col items-center justify-center text-black w-[60vw]">
-          <p className="text-center text-2xl text-black lg:text-5xl font-bold pb-5">
-            Nombre de la empresa
-          </p>
+          <p className="text-center text-2xl text-black lg:text-5xl font-bold pb-5">{emprendimiento.emprendimiento?.nombre}          </p>
           <p>
             Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante
             curabitur accumsan sodales nibh. Sed purus tellus id aenean

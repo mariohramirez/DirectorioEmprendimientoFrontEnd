@@ -40,11 +40,7 @@ export const retrieveEmprendimientoById = (reqData) => {
     return async (dispatch) => {
         dispatch({type: GET_EMPRENDIMIENTO_BY_ID_REQUEST});
         try {
-            const response = await api.get(`/api/emprendimientos/${reqData.emprendimientoId}`, {
-                headers: {
-                    Authorization: `Bearer ${reqData.jwt}`,
-                },
-            });
+            const response = await api.get(`/api/emprendimientos/${reqData.emprendimientoId}`, );
             dispatch({type: GET_EMPRENDIMIENTO_BY_ID_SUCCESS, payload: response.data});
             console.log("Todos los emprendimientos");
         } catch (error) {
