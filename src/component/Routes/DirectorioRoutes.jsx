@@ -12,6 +12,7 @@ import Auth from "../Auth/Auth";
 import AdminDashboard from "../Admin/AdminDashboard";
 import AdminEmprendimientos from "../Admin/Listas/AdminEmprendimientos";
 import Emprendimiento from "../Admin/Emprendimiento/Emprendimiento";
+import Servicios from "../Servicios/Servicios";
 
 export const DirectorioRoutes = () => {
   return (
@@ -23,7 +24,7 @@ export const DirectorioRoutes = () => {
         <Route path="/directorio/emprendimiento/:nombreEmprendimiento/:id" element={<DetalleEmprendimiento />} />
         <Route path="/novedades" element={<Noticias />} />
         <Route path="/novedades/detalle" element={<DetalleNoticia />} />
-        <Route path="/novedades/detalle" element={<DetalleNoticia />} />
+        <Route path="/servicios" element={<Servicios />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route
           path="/admin/emprendimientos"
