@@ -6,8 +6,6 @@ const menu = [
   { title: "Inicio" },
   { title: "Directorio" },
   { title: "Novedades" },
-  /* { title: "Convocatorias" },
-  { title: "Eventos" },*/
   { title: "Servicios" },
   { title: "Administracion" },
 ];
