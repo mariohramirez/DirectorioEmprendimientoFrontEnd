@@ -55,7 +55,7 @@ const EmprendimientoCard = ({ item }) => {
       </div>
       <div className=" bg-[#137598] p-2 lg:flex flex-col justify-center items-center">
         <p
-          onClick={() => navigate("/directorio/detalle")}
+          onClick={() => navigate(`/directorio/emprendimiento/${item.nombre}/${item.id}`)}
           className=" cursor-pointer hover:text-black"
         >
           Ver mas

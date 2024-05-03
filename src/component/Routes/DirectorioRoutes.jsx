@@ -20,7 +20,7 @@ export const DirectorioRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/directorio" element={<Directorio />} />
-        <Route path="/directorio/detalle" element={<DetalleEmprendimiento />} />
+        <Route path="/directorio/emprendimiento/:nombreEmprendimiento/:id" element={<DetalleEmprendimiento />} />
         <Route path="/novedades" element={<Noticias />} />
         <Route path="/novedades/detalle" element={<DetalleNoticia />} />
         <Route path="/novedades/detalle" element={<DetalleNoticia />} />
