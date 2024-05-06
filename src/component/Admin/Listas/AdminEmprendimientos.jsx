@@ -75,19 +75,18 @@ const AdminEmprendimientos = () => {
             name="Agregar"
           >
             <div className="mx-4 my-2 flex flex-row gap-[10px] items-center justify-center">
-              {/*Icono de usuario usando material UI Icons*/}
-              <span></span>
-
               <span className="font-roboto-slab text-base">
                 Agregar nuevo emprendimiento
               </span>
             </div>
           </button>
         </div>
-        <DataTable slug="emprendimiento" columns={columnsTabla} rows={rows} />
-        {open && (
-          <Add slug="emprendimiento" columns={columns} setOpen={setOpen} />
-        )}
+        <div className="pb-10">
+          <DataTable slug="emprendimiento" columns={columnsTabla} rows={rows} />
+          {open && (
+            <Add slug="emprendimiento" columns={columns} setOpen={setOpen} />
+          )}
+        </div>
       </div>
     </section>
   );

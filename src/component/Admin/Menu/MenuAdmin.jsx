@@ -7,7 +7,7 @@ const MenuAdmin = () => {
     <div className="bg-[#026937] w-[250px] py-[5px] px-[20px] border-r-[1px] border-[#026937]/50">
       {menu.map((item) => (
         <div className="flex flex-col gap-[10px] mb-[20px]" key={item.key}>
-          <span className=" text-[12px] font-[200]">{item.title}</span>
+          {/*<span className=" text-[12px] font-[200]">{item.title}</span>*/}
           {item.listItems.map((listItem) => (
           <Link
             to={listItem.to}
