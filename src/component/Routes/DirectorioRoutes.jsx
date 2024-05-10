@@ -28,7 +28,7 @@ export const DirectorioRoutes = () => {
           element={<DetalleEmprendimiento />}
         />
         <Route path="/novedades" element={<Noticias />} />
-        <Route path="/novedades/detalle" element={<DetalleNoticia />} />
+        <Route path="/novedades/:categoria/:titulo/:id" element={<DetalleNoticia />} />
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route
