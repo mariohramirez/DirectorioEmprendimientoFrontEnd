@@ -4,6 +4,7 @@ import BarraBusqueda from "./BarraBusqueda";
 import FiltroEmprendimiento from "./FiltroEmprendimiento";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientos } from "../State/Emprendimiento/Action";
+import { useState } from "react";
 
 const filtro = [1, 1, 1];
 const Directorio = () => {
@@ -15,12 +16,23 @@ const Directorio = () => {
 
   useEffect(() => {dispatch(retrieveEmprendimientos())},[])
 
+  const [query, setQuery] = useState("");
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const filteredEmprendimientos = emprendimiento.emprendimientos.filter((emprendimiento) => {
+    return emprendimiento.nombre.toLowerCase().includes(query.toLowerCase())
+  });
+
+
   return (
     <div className="">
       {/*Seccion con las card de los emprendimientos*/}
       <section className="relative flex flex-col justify-center items-center">
         {/*Barra de busqueda*/}
-        <BarraBusqueda />
+        <BarraBusqueda handleInputChange={handleInputChange} query={query}/>
         <div className="flex flex-wrap items-center justify-around gap-5 pt-10 w-[80vw] text-black">
           {
             /*Mapeo de los filtros de los emprendimientos*/
@@ -33,10 +45,8 @@ const Directorio = () => {
         <div className="flex flex-wrap items-center justify-around gap-5 py-10 px-[50px]">
           {
             /*Mapeo de los emprendimientos donde cada item crea una card de emprendimiento*/
-            emprendimiento.emprendimientos.map((item) => (
-              <EmprendimientoCard item={item}/>
-
-              //<span>{item.nombre}</span>
+            filteredEmprendimientos.map((item) => (
+              <EmprendimientoCard key={item.id} item={item} />
             ))
             
           }

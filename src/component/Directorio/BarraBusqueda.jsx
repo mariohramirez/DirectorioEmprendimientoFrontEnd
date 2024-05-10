@@ -1,13 +1,15 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
-const BarraBusqueda = () => {
+const BarraBusqueda = ({handleInputChange, query}) => {
   return (
     <div className="flex flex-row gap-5 bg-[#026937] mt-10 py-5 px-10 w-[80vw] justify-center items-center rounded-lg">
       {/*Input para realizar la busqueda de un emprendimiento*/}
       <input
         type="text"
         className="w-[80%] h-10 bg-[#F7F6F6] text-black py-6 px-5 rounded-lg border-none"
+        onChange={handleInputChange}
+        value={query}
         placeholder="Encuentra un emprendimiento"
       />
       {/*Boton para realizar la busqueda de un emprendimiento*/}
