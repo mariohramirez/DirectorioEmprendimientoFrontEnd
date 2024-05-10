@@ -49,8 +49,41 @@ const AdminEmprendimientos = () => {
         field: key,
         headerName: key.charAt(0).toUpperCase() + key.slice(1),
         width: 150,
+        type: determineColumnType(emprendimientoEjemplo[key]),
       }))
     : [];
+
+    function determineColumnType(value) {
+      if (typeof value === "string") {
+        // Verificar si es una fecha
+        if (isValidDate(value)) {
+          return "date";
+        }
+        // Verificar si es un número
+        else if (!isNaN(value)) {
+          return "number";
+        }
+        // Si no es una fecha ni un número, se asume que es texto
+        else {
+          return "text";
+        }
+      } else if (typeof value === "boolean") {
+        return "boolean";
+      } else {
+        // Si el tipo no es string ni boolean, se asume que es texto
+        return "text";
+      }
+    }
+
+    function isValidDate(dateString) {
+      // Intenta analizar la cadena como una fecha
+      const timestamp = Date.parse(dateString);
+      // Si el resultado es un valor numérico, es una fecha válida
+      return !isNaN(timestamp);
+    }
+    
+
+    
 
   const rows = emprendimiento.emprendimientos.map((emprendimiento) => ({
     ...emprendimiento,
