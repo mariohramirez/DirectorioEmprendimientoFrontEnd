@@ -1,8 +1,7 @@
 import React from "react";
-import FiltroNoticia from "./FiltroNoticia";
-import CardNoticia from "./CardNoticia";
 import Carousel from "./Carousel";
 import ListaNoticia from "./ListaNoticia";
+import { novedad } from "./Novedad";
 
 {
   /*Arreglo de emprendimientos a partir de los cuales se crean las cards*/
@@ -12,8 +11,6 @@ const slides = [
   "/jpg/FotosMiniatura/fotoNoticia.jpg",
   "/jpg/FotosMiniatura/fotoNoticia.jpg",
 ];
-const noticias = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-const filtro = [1, 1];
 const Noticias = () => {
   return (
     <div className="">
@@ -57,8 +54,8 @@ const Noticias = () => {
         <div className="flex flex-col items-center justify-around gap-5 py-10 px-[50px]">
           {
             /*Mapeo de las noticias donde cada item crea una card de noticia*/
-            noticias.map((item) => (
-              <ListaNoticia />
+            novedad.map((item) => (
+              <ListaNoticia novedad={item}/>
             ))
           }
         </div>
