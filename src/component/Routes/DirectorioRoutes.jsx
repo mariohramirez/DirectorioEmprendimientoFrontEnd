@@ -17,12 +17,14 @@ import AdminEmprendedores from "../Admin/Listas/AdminEmprendedores";
 import Emprendedor from "../Admin/Emprendedor/Emprendedor";
 import AdminNovedades from "../Admin/Listas/AdminNovedades";
 import AdminUsuarios from "../Admin/Listas/AdminUsuarios";
-import NotFound from "../NotFound/NotFound";
+import NotFound from "../Configuracion/NotFound";
+import ScrollToTop from "../Configuracion/ScrollToTop";
 
 export const DirectorioRoutes = () => {
   return (
     <div>
       <NavBar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/directorio" element={<Directorio />} />
@@ -31,21 +33,18 @@ export const DirectorioRoutes = () => {
           element={<DetalleEmprendimiento />}
         />
         <Route path="/novedades" element={<Noticias />} />
-        <Route path="/novedades/:categoria/:titulo/:id" element={<DetalleNoticia />} />
+        <Route
+          path="/novedades/:categoria/:titulo/:id"
+          element={<DetalleNoticia />}
+        />
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route
           path="/admin/emprendimientos"
           element={<AdminEmprendimientos />}
         />
-        <Route
-          path="/admin/novedades"
-          element={<AdminNovedades />}
-        />
-        <Route
-          path="/admin/usuarios"
-          element={<AdminUsuarios />}
-        />
+        <Route path="/admin/novedades" element={<AdminNovedades />} />
+        <Route path="/admin/usuarios" element={<AdminUsuarios />} />
         <Route path="/admin/emprendedores" element={<AdminEmprendedores />} />
         <Route
           path="/admin/emprendedores/emprendedores/:id"
