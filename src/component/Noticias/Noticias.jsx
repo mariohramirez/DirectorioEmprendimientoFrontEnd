@@ -3,7 +3,8 @@ import Carousel from "./Carousel";
 import ListaNoticia from "./ListaNoticia";
 import { novedad } from "./Novedad";
 import { useState } from "react";
-
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 {
   /*Arreglo de imagenes a partir de las cuales se crean las slides*/
 }
@@ -20,18 +21,28 @@ const Noticias = () => {
   ];
 
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [filteredNovedad, setFilteredNovedad] = useState([]);
+  const navigate = useNavigate();
 
   const handleClick = (category) => {
     setSelectedCategory(category);
+    navigate(`/novedades?categoria=${category}`);
   };
 
-  const filteredNovedad = selectedCategory
-    ? novedad.filter((item) => item.categoria === selectedCategory)
-    : novedad;
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const categoria = params.get("categoria");
+    setSelectedCategory(categoria);
+  }, []);
 
-  const sortedNovedad = filteredNovedad.sort(
-    (a, b) => new Date(b.fecha) - new Date(a.fecha)
-  );
+  useEffect(() => {
+    const filtered = selectedCategory
+      ? novedad
+          .filter((item) => item.categoria === selectedCategory)
+          .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+      : novedad;
+    setFilteredNovedad(filtered);
+  }, [selectedCategory]);
 
   return (
     <div className="">
@@ -43,10 +54,7 @@ const Noticias = () => {
         text-[#026937] text-4xl font-bold border-t-2 border-b-2 border-[#026937] w-[80vw]"
         >
           <div className="flex flex-row justify-evenly">
-            <div
-              className="border-r-2 border-[#026937] px-10"
-              
-            >
+            <div className="border-r-2 border-[#026937] px-10">
               <span
                 onClick={() => handleClick(null)}
                 className={`hover:border-b-2 border-[#026937] cursor-pointer ${
@@ -56,9 +64,7 @@ const Noticias = () => {
                 Todas
               </span>
             </div>
-            <div
-              className="border-r-2 border-[rgb(2,105,55)] px-10 "
-            >
+            <div className="border-r-2 border-[rgb(2,105,55)] px-10 ">
               <span
                 onClick={() => handleClick("Novedad")}
                 className={`hover:border-b-2 border-[#026937] cursor-pointer ${
@@ -68,9 +74,7 @@ const Noticias = () => {
                 Novedades
               </span>
             </div>
-            <span
-              className="border-r-2 border-[#026937] px-10 "
-            >
+            <span className="border-r-2 border-[#026937] px-10 ">
               <span
                 onClick={() => handleClick("Convocatoria")}
                 className={`hover:border-b-2 border-[#026937] cursor-pointer ${
@@ -80,9 +84,7 @@ const Noticias = () => {
                 Convocatorias
               </span>
             </span>
-            <div
-              className="px-10" 
-            >
+            <div className="px-10">
               <span
                 onClick={() => handleClick("Evento")}
                 className={`hover:border-b-2 border-[#026937] cursor-pointer ${
@@ -101,7 +103,7 @@ const Noticias = () => {
         <div className="flex flex-col items-center justify-around gap-5 py-10 px-[50px]">
           {
             /*Mapeo de las noticias donde cada item crea una card de noticia*/
-            sortedNovedad.map((item) => (
+            filteredNovedad.map((item) => (
               <ListaNoticia novedad={item} />
             ))
           }

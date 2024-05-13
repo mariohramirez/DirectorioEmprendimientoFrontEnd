@@ -4,14 +4,16 @@ import { useNavigate } from "react-router-dom";
 const ListaNoticia = ({ novedad }) => {
   const navigate = useNavigate();
 
+  const tituloParaRuta = novedad.titulo.replace(/\s+/g, '-').toLowerCase();
+
   return (
     <div className="flex flex-row w-[80vw] border-t-2 border-b-2 border-[#026937] py-2">
       <div className="relative flex h-[12rem] w-[12rem]">
         <img
           onClick={() =>
             navigate(
-              `/novedades/${novedad.categoria}/${novedad.titulo}/${novedad.id}`
-            )
+              `/novedades/${novedad.categoria}/${tituloParaRuta}/${novedad.id}`
+              )
           }
           className="w-full h-full object-cover z-10 cursor-pointer"
           src={novedad.imagen}
@@ -25,8 +27,8 @@ const ListaNoticia = ({ novedad }) => {
         <p
           onClick={() =>
             navigate(
-              `/novedades/${novedad.categoria}/${novedad.titulo}/${novedad.id}`
-            )
+              `/novedades/${novedad.categoria}/${tituloParaRuta}/${novedad.id}`
+              )
           }
           className="text-4xl font-bold text-[#026937] cursor-pointer"
         >
@@ -37,7 +39,7 @@ const ListaNoticia = ({ novedad }) => {
           <button
             onClick={() =>
               navigate(
-                `/novedades/${novedad.categoria}/${novedad.titulo}/${novedad.id}`
+                `/novedades/${novedad.categoria}/${tituloParaRuta}/${novedad.id}`
               )
             }
             className="flex items-center bg-[#026937] text-white

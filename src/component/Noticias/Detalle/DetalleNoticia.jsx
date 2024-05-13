@@ -3,16 +3,22 @@ import SellIcon from "@mui/icons-material/Sell";
 import CardNoticiaRelacionada from "./CardNoticiaRelacionada";
 import { useNavigate } from "react-router-dom";
 import Conexiones from "./Conexiones";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { novedad } from "../Novedad";
 
-const etiquetas = [1, 1, 1];
-const noticiasRelacionadas = [1, 1, 1];
 const DetalleNoticia = () => {
-
-  const{id} = useParams();
+  const { id } = useParams();
 
   const navigate = useNavigate();
+
+  const handleClickCategoria = () => {
+    navigate(`/novedades?categoria=${novedad[id].categoria}`);
+  };
+
+  const noticiasRelacionadas = novedad
+    .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+    .slice(0, 3);
+
   return (
     <section className="relative flex flex-col justify-center py-14 lg:flex-row gap-10">
       <div className="flex flex-col gap-5 text-black w-[60vw]">
@@ -34,28 +40,24 @@ const DetalleNoticia = () => {
             <Conexiones />
           </div>
         </div>
-        <p className="text-justify">
-          {novedad[id].informacion}
-        </p>
+        <p className="text-justify">{novedad[id].informacion}</p>
         <div className="flex flex-row gap-5  border-t-2 border-b-2 border-black p-3 text-lg ">
-          <span className="font-semibold">Etiquetas:</span>
-          {etiquetas.map((item) => (
-            <div
-              onClick={() => navigate("/novedades")}
-              className=" cursor-pointer flex flex-row gap-1"
-            >
-              <span>
-                <SellIcon style={{ color: "#026937" }} />
-              </span>
-              <span className="text-[#026937]">Etiqueta</span>
-            </div>
-          ))}
+          <span className="font-semibold">Categoria:</span>
+          <div
+            onClick={handleClickCategoria}
+            className=" cursor-pointer flex flex-row gap-1"
+          >
+            <span>
+              <SellIcon style={{ color: "#026937" }} />
+            </span>
+            <span className="text-[#026937]">{novedad[id].categoria}</span>
+          </div>
         </div>
       </div>
       <div className="flex text-black w-[80vw] lg:w-[20vw] flex-col gap-5">
         <span className="text-2xl lg:text-5xl font-bold">Actualidad</span>
         {noticiasRelacionadas.map((item) => (
-          <CardNoticiaRelacionada />
+          <CardNoticiaRelacionada novedad={item} />
         ))}
       </div>
     </section>
