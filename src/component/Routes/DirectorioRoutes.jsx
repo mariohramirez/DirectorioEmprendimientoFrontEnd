@@ -15,6 +15,9 @@ import Emprendimiento from "../Admin/Emprendimiento/Emprendimiento";
 import Servicios from "../Servicios/Servicios";
 import AdminEmprendedores from "../Admin/Listas/AdminEmprendedores";
 import Emprendedor from "../Admin/Emprendedor/Emprendedor";
+import AdminNovedades from "../Admin/Listas/AdminNovedades";
+import AdminUsuarios from "../Admin/Listas/AdminUsuarios";
+import NotFound from "../NotFound/NotFound";
 
 export const DirectorioRoutes = () => {
   return (
@@ -35,6 +38,14 @@ export const DirectorioRoutes = () => {
           path="/admin/emprendimientos"
           element={<AdminEmprendimientos />}
         />
+        <Route
+          path="/admin/novedades"
+          element={<AdminNovedades />}
+        />
+        <Route
+          path="/admin/usuarios"
+          element={<AdminUsuarios />}
+        />
         <Route path="/admin/emprendedores" element={<AdminEmprendedores />} />
         <Route
           path="/admin/emprendedores/emprendedores/:id"
@@ -45,6 +56,7 @@ export const DirectorioRoutes = () => {
           path="/admin/emprendimientos/emprendimiento/:id"
           element={<Emprendimiento />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <Auth />

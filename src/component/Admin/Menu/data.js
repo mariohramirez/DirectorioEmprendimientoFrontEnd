@@ -45,18 +45,7 @@ export const menu = [
                 icon: "PerfilIcon",
                 to: "/admin/Novedades",
             },
-            {
-                id: 5,
-                title: "Convocatorias",
-                icon: "PerfilIcon",
-                to: "/admin/Convocatorias",
-            },
-            {
-                id: 6,
-                title: "Eventos",
-                icon: "PerfilIcon",
-                to: "/admin/Eventos",
-            },
+
         ],
     },
     {

@@ -23,7 +23,7 @@ const ListaNoticia = ({ novedad }) => {
           <p className=" text-white text-lg font-bold">{novedad.categoria}</p>
         </div>
       </div>
-      <div className="w-[66vw] px-2">
+      <div className="w-[66vw] px-2 relative">
         <p
           onClick={() =>
             navigate(
@@ -35,7 +35,7 @@ const ListaNoticia = ({ novedad }) => {
           {novedad.titulo}
         </p>
         <p className="text-lg text-black">{novedad.resumen}</p>
-        <div>
+        <div className="absolute bottom-0 right-0">
           <button
             onClick={() =>
               navigate(

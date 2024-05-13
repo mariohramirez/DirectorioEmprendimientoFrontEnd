@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
 
-const AdminEmprendedores = () => {
+const AdminNovedades = () => {
 
 
   const [open, setOpen] = React.useState(false);
@@ -19,7 +19,7 @@ const AdminEmprendedores = () => {
       <div className="w-[81vw]">
         <div className="flex  flex-col items-center gap-[20px] mb-[20px]">
           <p className=" text-black text-2xl lg:text-5xl font-bold pt-10 text-center">
-            Emprendedores
+            Novedades
           </p>
           <button
             onClick={() => setOpen(true)}
@@ -31,7 +31,7 @@ const AdminEmprendedores = () => {
           >
             <div className="mx-4 my-2 flex flex-row gap-[10px] items-center justify-center">
               <span className="font-roboto-slab text-base">
-                Agregar nuevo emprendimiento
+                Agregar nueva novedad
               </span>
             </div>
           </button>
@@ -43,4 +43,4 @@ const AdminEmprendedores = () => {
   );
 };
 
-export default AdminEmprendedores;
+export default AdminNovedades;
