@@ -26,7 +26,6 @@ const Directorio = () => {
     return emprendimiento.nombre.toLowerCase().includes(query.toLowerCase())
   });
 
-
   return (
     <div className="">
       {/*Seccion con las card de los emprendimientos*/}

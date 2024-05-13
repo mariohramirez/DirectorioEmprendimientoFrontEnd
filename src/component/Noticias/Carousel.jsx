@@ -1,23 +1,13 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 
-function Carousel({
-  children: slides,
-  autoSlide = false,
-  autoSlideInterval = 3000,
-}) {
+function Carousel({ slides, autoSlide = false, autoSlideInterval = 3000, textSlides }) {
   const [curr, setCurrent] = useState(0);
 
   const prev = () =>
     setCurrent((curr) => (curr === 0 ? slides.length - 1 : curr - 1));
   const next = () =>
     setCurrent((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
-
-  const slideTexts = [
-    "Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante curabitur accumsan sodales nibh. Sed purus tellus id    aenean volutpat. Diam turpis convallis at ut fringilla elementum ornare sit. Viverra sagittis sapien mauris nibh. At tincidunt gravida dolor aliquet magna in praesent. 1",
-    "Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante curabitur accumsan sodales nibh. Sed purus tellus id    aenean volutpat. Diam turpis convallis at ut fringilla elementum ornare sit. Viverra sagittis sapien mauris nibh. At tincidunt gravida dolor aliquet magna in praesent. 2",
-    "Lorem ipsum dolor sit amet consectetur. Leo sollicitudin ante curabitur accumsan sodales nibh. Sed purus tellus id    aenean volutpat. Diam turpis convallis at ut fringilla elementum ornare sit. Viverra sagittis sapien mauris nibh. At tincidunt gravida dolor aliquet magna in praesent. 3",
-  ];
 
   useEffect(() => {
     if (!autoSlide) return;
@@ -38,7 +28,9 @@ function Carousel({
                 className="flex transition-trasnform ease-out duration-500"
                 style={{ transform: `translateX(-${curr * 100}%)` }}
               >
-                {slides}
+                {slides.map((slide) => (
+                  <img className="object-cover" src={slide} />
+                ))}{" "}
               </div>
               <div className="absolute inset-0 flex items-center justify-between p-4">
                 <button
@@ -66,7 +58,7 @@ function Carousel({
               </div>
               <div className="absolute bottom-0 right-0 left-0">
                 <div className=" bg-[#026937] bg-opacity-50 py-4 text-center rounded-b-md lg:w-[80vw] px-10 z-20">
-                  <div className="text-sm">{slideTexts[curr]}</div>
+                  <div className="text-sm">{textSlides[curr]}</div>
                 </div>
               </div>
             </div>
@@ -74,10 +66,7 @@ function Carousel({
               className="w-[80vw] h-[20rem] object-cover z-10"
               src="/jpg/FotosMiniatura/fotoNoticia.jpg"
               alt="Foto"
-                  />*/}
-            <div className="absolute inset-y-[0rem] inset-x-[0rem] bg-[#026937] bg-opacity-50 w-full -z-10">
-              <span className="text-5xl">Titulo novedad</span>
-            </div>
+            />*/}
           </div>
         </div>
       </div>

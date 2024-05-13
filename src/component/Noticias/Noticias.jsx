@@ -2,9 +2,10 @@ import React from "react";
 import Carousel from "./Carousel";
 import ListaNoticia from "./ListaNoticia";
 import { novedad } from "./Novedad";
+import { useState } from "react";
 
 {
-  /*Arreglo de emprendimientos a partir de los cuales se crean las cards*/
+  /*Arreglo de imagenes a partir de las cuales se crean las slides*/
 }
 const slides = [
   "/jpg/FotosMiniatura/fotoNoticia.jpg",
@@ -12,36 +13,82 @@ const slides = [
   "/jpg/FotosMiniatura/fotoNoticia.jpg",
 ];
 const Noticias = () => {
+  const slidesTexts = [
+    novedad[0].resumen,
+    novedad[1].resumen,
+    novedad[2].resumen,
+  ];
+
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleClick = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredNovedad = selectedCategory
+    ? novedad.filter((item) => item.categoria === selectedCategory)
+    : novedad;
+
+  const sortedNovedad = filteredNovedad.sort(
+    (a, b) => new Date(b.fecha) - new Date(a.fecha)
+  );
+
   return (
     <div className="">
       <section className="relative flex flex-col justify-center items-center">
-        <Carousel autoSlide={true}>
-          {slides.map((slide) => (
-            <img className="object-cover" src={slide} />
-          ))}
-        </Carousel>
+        <Carousel slides={slides} autoSlide={true} textSlides={slidesTexts} />
+
         <div
           className=" p-5 my-10 flex flex-col justify-center items-center 
         text-[#026937] text-4xl font-bold border-t-2 border-b-2 border-[#026937] w-[80vw]"
         >
-          <div className="flex flex-row  justify-evenly">
-            <div className=" border-r-2 border-[#026937] px-10">
-              <span className="hover:border-b-2 border-[#026937] cursor-pointer">
+          <div className="flex flex-row justify-evenly">
+            <div
+              className="border-r-2 border-[#026937] px-10"
+              
+            >
+              <span
+                onClick={() => handleClick(null)}
+                className={`hover:border-b-2 border-[#026937] cursor-pointer ${
+                  selectedCategory === null ? "border-b-2" : ""
+                }`}
+              >
                 Todas
               </span>
             </div>
-            <div className=" border-r-2 border-[#026937] px-10 ">
-              <span className="hover:border-b-2 border-[#026937] cursor-pointer">
+            <div
+              className="border-r-2 border-[rgb(2,105,55)] px-10 "
+            >
+              <span
+                onClick={() => handleClick("Novedad")}
+                className={`hover:border-b-2 border-[#026937] cursor-pointer ${
+                  selectedCategory === "Novedad" ? "border-b-2" : ""
+                }`}
+              >
                 Novedades
               </span>
             </div>
-            <span className=" border-r-2 border-[#026937] px-10">
-              <span className="hover:border-b-2 border-[#026937] cursor-pointer">
+            <span
+              className="border-r-2 border-[#026937] px-10 "
+            >
+              <span
+                onClick={() => handleClick("Convocatoria")}
+                className={`hover:border-b-2 border-[#026937] cursor-pointer ${
+                  selectedCategory === "Convocatoria" ? "border-b-2" : ""
+                }`}
+              >
                 Convocatorias
               </span>
             </span>
-            <div className=" px-10">
-              <span className="hover:border-b-2 border-[#026937] cursor-pointer">
+            <div
+              className="px-10" 
+            >
+              <span
+                onClick={() => handleClick("Evento")}
+                className={`hover:border-b-2 border-[#026937] cursor-pointer ${
+                  selectedCategory === "Evento" ? "border-b-2" : ""
+                }`}
+              >
                 Eventos
               </span>
             </div>
@@ -54,8 +101,8 @@ const Noticias = () => {
         <div className="flex flex-col items-center justify-around gap-5 py-10 px-[50px]">
           {
             /*Mapeo de las noticias donde cada item crea una card de noticia*/
-            novedad.map((item) => (
-              <ListaNoticia novedad={item}/>
+            sortedNovedad.map((item) => (
+              <ListaNoticia novedad={item} />
             ))
           }
         </div>
