@@ -10,7 +10,7 @@ const Add = ({ slug, columns, setOpen }) => {
   };
 
   return (
-    <div className="z-20 w-[100%] h-[100%] absolute top-0 left-0 bg-[#026937]/50 flex items-center justify-center">
+    <div className="z-50 w-[100%] h-[100%] absolute top-0 left-0 bg-[#026937]/50 flex items-center justify-center">
       <div className="p-[50px] bg-[#242B2E] relative">
         <span
           className=" cursor-pointer absolute top-[10px] right-[10px]"
