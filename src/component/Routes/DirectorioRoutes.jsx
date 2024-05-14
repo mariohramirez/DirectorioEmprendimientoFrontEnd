@@ -19,6 +19,7 @@ import AdminNovedades from "../Admin/Listas/AdminNovedades";
 import AdminUsuarios from "../Admin/Listas/AdminUsuarios";
 import NotFound from "../Configuracion/NotFound";
 import ScrollToTop from "../Configuracion/ScrollToTop";
+import Reportes from "../Admin/Reporte/Reportes";
 
 export const DirectorioRoutes = () => {
   return (
@@ -50,7 +51,7 @@ export const DirectorioRoutes = () => {
           path="/admin/emprendedores/emprendedores/:id"
           element={<Emprendedor />}
         />
-
+        <Route path="/admin/reportes" element={<Reportes />} />
         <Route
           path="/admin/emprendimientos/emprendimiento/:id"
           element={<Emprendimiento />}
