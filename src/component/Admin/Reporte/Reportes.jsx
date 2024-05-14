@@ -3,11 +3,6 @@ import MenuAdmin from "../Menu/MenuAdmin";
 import PieChartBox from "./PieChartBox/PieChartBox";
 import { reportes } from "./data";
 
-const data = [
-  { name: "Hombres", value: 90, color: "#0088FE" },
-  { name: "Mujeres", value: 20, color: "#00C49F" },
-];
-
 const Reportes = () => {
   return (
     <section className="flex min-h-[72vh]">

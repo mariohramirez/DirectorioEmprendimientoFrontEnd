@@ -1,6 +1,6 @@
 export const novedad = [
     {
-        id: 1,
+        id: 0,
         titulo: "Lanzamiento de nueva plataforma de apoyo a emprendedores",
         resumen: "Descubre cómo esta nueva plataforma está revolucionando el mundo del emprendimiento.",
         informacion: "La plataforma ofrece herramientas y recursos gratuitos para ayudar a los emprendedores a iniciar y hacer crecer sus negocios. Incluye tutoriales, consejos de expertos y una comunidad activa.",
@@ -10,7 +10,7 @@ export const novedad = [
         autor: "Equipo de Desarrollo de la Plataforma"
     },
     {
-        id: 2,
+        id: 1,
         titulo: "Convocatoria abierta para el programa de aceleración de startups",
         resumen: "¡Participa en este programa para acelerar el crecimiento de tu startup!",
         informacion: "El programa ofrece mentoría, acceso a inversores y recursos de desarrollo durante seis meses. Buscan startups con potencial de crecimiento rápido.",
@@ -20,7 +20,7 @@ export const novedad = [
         autor: "Aceleradora de Startups 'InnovaTech'"
     },
     {
-        id: 3,
+        id: 2,
         titulo: "Conferencia internacional sobre emprendimiento social",
         resumen: "Únete a esta conferencia para aprender sobre el impacto del emprendimiento social en la sociedad.",
         informacion: "La conferencia contará con ponentes internacionales que compartirán sus experiencias y conocimientos sobre emprendimiento social. Habrá talleres prácticos y oportunidades de networking.",
@@ -30,7 +30,7 @@ export const novedad = [
         autor: "Organización Internacional de Emprendimiento Social"
     },
     {
-        id: 4,
+        id: 3,
         titulo: "Nuevo programa de financiamiento para startups",
         resumen: "Conoce los detalles de este programa que busca impulsar el crecimiento de las startups.",
         informacion: "El programa ofrece financiamiento a bajo interés y asesoramiento financiero a startups prometedoras. Está dirigido a empresas en etapas tempranas.",
@@ -40,7 +40,7 @@ export const novedad = [
         autor: "Ministerio de Economía y Finanzas"
     },
     {
-        id: 5,
+        id: 4,
         titulo: "Convocatoria para el concurso de ideas innovadoras",
         resumen: "Presenta tu idea innovadora y gana premios para impulsar su desarrollo.",
         informacion: "El concurso busca ideas innovadoras en cualquier sector. Los premios incluyen financiamiento, mentoría y visibilidad mediática.",
@@ -50,7 +50,7 @@ export const novedad = [
         autor: "Fundación para la Innovación y el Desarrollo"
     },
     {
-        id: 6,
+        id: 5,
         titulo: "Feria de emprendimiento local",
         resumen: "Descubre los emprendimientos locales y apoya a la comunidad emprendedora.",
         informacion: "La feria contará con stands de emprendedores locales que ofrecen productos y servicios únicos. Habrá música en vivo, actividades para niños y comida local.",

@@ -26,7 +26,7 @@ const CardNoticiaRelacionada = ({ novedad }) => {
         </div>
         <div className="flex flex-col items-center">
           <p className="font-semibold text-lg text-center py-2">
-            {novedad.resumen}
+            {novedad.titulo}
           </p>
           <p className="text-sm text-justify">{novedad.resumen} </p>
         </div>
