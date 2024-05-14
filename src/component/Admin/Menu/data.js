@@ -54,15 +54,9 @@ export const menu = [
         listItems: [
             {
                 id: 1,
-                title: "Reportes de Emprendimientos",
+                title: "Reportes",
                 icon: "HomeIcon",
-                to: "/admin",
-            },
-            {
-                id: 2,
-                title: "Reportes de Emprendedores",
-                icon: "PerfilIcon",
-                to: "/admin/perfil",
+                to: "/admin/Reportes",
             },
         ],
     },
