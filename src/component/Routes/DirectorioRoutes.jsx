@@ -20,6 +20,7 @@ import AdminUsuarios from "../Admin/Listas/AdminUsuarios";
 import NotFound from "../Configuracion/NotFound";
 import ScrollToTop from "../Configuracion/ScrollToTop";
 import Reportes from "../Admin/Reporte/Reportes";
+import WritePage from "../Admin/Listas/Write/Page";
 
 export const DirectorioRoutes = () => {
   return (
@@ -45,6 +46,7 @@ export const DirectorioRoutes = () => {
           element={<AdminEmprendimientos />}
         />
         <Route path="/admin/novedades" element={<AdminNovedades />} />
+        <Route path="/admin/novedades/agregar" element={<WritePage />} />
         <Route path="/admin/usuarios" element={<AdminUsuarios />} />
         <Route path="/admin/emprendedores" element={<AdminEmprendedores />} />
         <Route

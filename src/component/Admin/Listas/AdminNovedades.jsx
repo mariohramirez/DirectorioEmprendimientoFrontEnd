@@ -5,8 +5,11 @@ import Add from "./Add/Add";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
+import { useNavigate } from "react-router-dom";
 
 const AdminNovedades = () => {
+
+  const navigate = useNavigate();
 
 
   const [open, setOpen] = React.useState(false);
@@ -22,7 +25,11 @@ const AdminNovedades = () => {
             Novedades
           </p>
           <button
-            onClick={() => setOpen(true)}
+            onClick={() =>
+              navigate(
+                `/admin/novedades/agregar`
+              )
+            }
             className="flex items-center bg-[#026937] rounded-sm
                         text-lg transition duration-300 ease-in-out hover:bg-[#8DC63F]"
             style={{ boxShadow: "0px 4px 5px 0px rgba(0, 0, 0, 0.7)" }}
