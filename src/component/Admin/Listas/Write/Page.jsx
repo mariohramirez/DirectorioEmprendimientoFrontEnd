@@ -10,20 +10,23 @@ const WritePage = () => {
   return (
     <section className="relative flex">
       <MenuAdmin />
-      <div className="relative flex flex-col w-[80vw]">
+      <div className="relative flex flex-col w-[80vw] p-2">
         <input
           type="text"
           placeholder="Titulo"
           className="p-[50px] text-[64px] rounded-none outline-none bg-transparent text-black"
         />
-        <select
-          className="mb-[50px] pt-[10px] pr-[20px] ml-[50px] text-black"
-          style={{ width: "max-content" }}
-        >
-          <option value="Novedad">Novedades</option>
-          <option value="Evento">Eventos</option>
-          <option value="Convocatoria">Convocatorias</option>
-        </select>
+        <div>
+          <span className="text-black pl-[50px]">Categoria: </span>
+          <select
+            className="mb-[50px] pt-[10px] ml-[50px] text-black"
+            style={{ width: "max-content" }}
+          >
+            <option value="Novedad">Novedades</option>
+            <option value="Evento">Eventos</option>
+            <option value="Convocatoria">Convocatorias</option>
+          </select>
+        </div>
         <div className="flex gap-[20px] h-[700px] relative">
           <button
             onClick={() => setOpen(!open)}
