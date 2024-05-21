@@ -19,7 +19,7 @@ const textos = [
 const Servicios = () => {
   return (
     <div className="">
-      <section className="banner relative flex flex-col justify-center items-center">
+      <section className="banner relative flex flex-col justify-center items-center min-w[100vw]">
         <div className="w-[80vw] z-10 text-center">
           <p className="text-2xl text-black lg:text-5xl font-bold z-10 py-10">
             Portafolio de servicios
@@ -71,7 +71,7 @@ const Servicios = () => {
             Ullamcorper id arcu maecenas dignissim montes.
           </p>
           <div className="flex gap-[20px] items-center justify-center  py-10">
-            <RoleButton text="Registrar Emprendimiento" url="https://forms.office.com/pages/responsepage.aspx?id=IefhmYRxjkmK_7KtTlPBwke8p-azwIdPkDYFCIUGxKZUOUQzVFdaUVBJS0E0N1pBRkIwQlVOVzJOSyQlQCN0PWcu"/>
+            <RoleButton text="Registrar Emprendimiento" url="/servicios/formulario/Registro/Emprendedor"/>
           </div>
         </div>
       </section>

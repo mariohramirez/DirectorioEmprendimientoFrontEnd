@@ -9,12 +9,6 @@ export const menu = [
                 icon: "HomeIcon",
                 to: "/admin",
             },
-            {
-                id: 2,
-                title: "Perfil",
-                icon: "PerfilIcon",
-                to: "/admin/perfil",
-            },
         ],
     },
     {

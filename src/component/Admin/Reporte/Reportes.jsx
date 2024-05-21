@@ -5,7 +5,7 @@ import { reportes } from "./data";
 
 const Reportes = () => {
   return (
-    <section className="flex min-h-[72vh]">
+    <section className="flex min-h-[78vh]">
       <MenuAdmin />
       <div className="flex flex-col w-[80vw] p-2  text-black">
         <span className=" text-center py-2 text-5xl font-semibold">

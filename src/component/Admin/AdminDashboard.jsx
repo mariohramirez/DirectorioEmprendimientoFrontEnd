@@ -5,7 +5,7 @@ const AdminDashboard = () => {
   return (
     <section className="flex">
       <MenuAdmin />
-      <div>
+      <div className="min-h-[78vh]">
         <h1 class>Dashboard</h1>
       </div>
     </section>

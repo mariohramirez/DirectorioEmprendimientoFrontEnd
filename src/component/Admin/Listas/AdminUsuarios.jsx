@@ -16,7 +16,7 @@ const AdminUsuarios = () => {
     <section className="relative flex">
       <MenuAdmin />
 
-      <div className="w-[81vw]">
+      <div className="w-[81vw] min-h-[78vh]">
         <div className="flex  flex-col items-center gap-[20px] mb-[20px]">
           <p className=" text-black text-2xl lg:text-5xl font-bold pt-10 text-center">
             Usuarios
