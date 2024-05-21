@@ -46,7 +46,7 @@ const Add = ({ slug, columns, setOpen }) => {
               .filter((column) => column.field !== "id")
               .map((column) => (
                 <div className="w-[45%]">
-                  {console.log("Columnaaaa: ",column.field," TIpo: ",column.type)}
+                  {console.log("Columnaaaa: ",column.field," Tipo: ",column.type)}
                   <Field
                     as={TextField}
                     name={column.headerName}

@@ -21,6 +21,10 @@ import NotFound from "../Configuracion/NotFound";
 import ScrollToTop from "../Configuracion/ScrollToTop";
 import Reportes from "../Admin/Reporte/Reportes";
 import WritePage from "../Admin/Listas/Write/Page";
+import FormularioRegistroEmprendedor from "../Servicios/Formulario/FormularioRegistroEmprendedor";
+import FormularioRegistroIndependiente from "../Servicios/Formulario/FormularioRegistroIndependiente";
+import FormularioGuardado from "../Servicios/Formulario/FormularioGuardado";
+import FormularioRegistroEmprendimiento from "../Servicios/Formulario/FormularioRegistroEmprendimiento";
 
 export const DirectorioRoutes = () => {
   return (
@@ -40,6 +44,10 @@ export const DirectorioRoutes = () => {
           element={<DetalleNoticia />}
         />
         <Route path="/servicios" element={<Servicios />} />
+        <Route path="/servicios/formulario/Registro/Emprendedor" element={<FormularioRegistroEmprendedor />} />
+        <Route path="/servicios/formulario/Registro/Profesional" element={<FormularioRegistroIndependiente />} />
+        <Route path="/servicios/formulario/Registro/Emprendimiento" element={<FormularioRegistroEmprendimiento />} />
+        <Route path="/servicios/formulario/Registro/Guardado" element={<FormularioGuardado />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route
           path="/admin/emprendimientos"
