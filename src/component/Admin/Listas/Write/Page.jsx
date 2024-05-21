@@ -14,7 +14,7 @@ const WritePage = () => {
         <input
           type="text"
           placeholder="Titulo"
-          className="p-[50px] text-[64px] rounded-none outline-none bg-transparent text-black"
+          className="border-[1px] border-solid border-black ml-[50px] pl-[10px] my-[50px]  text-[64px] rounded-none outline-none bg-white text-black"
         />
         <div>
           <span className="text-black pl-[50px]">Categoria: </span>
@@ -51,7 +51,7 @@ const WritePage = () => {
             </div>
           )}
           <ReactQuill
-            className="w-[100%] h-[90%] text-black border-[1px] border-solid border-black rounded-none outline-none"
+            className="w-[100%] h-[90%] text-black border-[1px] border-solid border-black rounded-none outline-none bg-white"
             theme="bubble"
             value={value}
             onChange={setValue}

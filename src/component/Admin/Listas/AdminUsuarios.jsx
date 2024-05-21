@@ -5,12 +5,36 @@ import Add from "./Add/Add";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
+import { usuario } from "./Usuario";
 
 const AdminUsuarios = () => {
 
-
   const [open, setOpen] = React.useState(false);
 
+  const usuarioEjemplo = usuario.usuarios[0];
+
+  const columnasIgnoradas = [
+    "resumen",
+    "nombreLogo",
+    "descripcion",
+    "informacionDeContacto",
+  ]; // Agrega aquí las claves que deseas ignorar
+
+  // Determinar las columnas basadas en las claves del emprendimiento seleccionado, ignorando las columnas especificadas
+  const columnsTabla = usuarioEjemplo
+    ? Object.keys(usuarioEjemplo)
+        .filter((key) => !columnasIgnoradas.includes(key))
+        .map((key) => ({
+          field: key,
+          headerName: key.charAt(0).toUpperCase() + key.slice(1),
+          width: 150,
+        }))
+    : [];
+
+  const rows = usuario.usuarios.map((usuario) => ({
+    ...usuario,
+    id: usuario.id,
+  }));
 
   return (
     <section className="relative flex">
@@ -37,6 +61,7 @@ const AdminUsuarios = () => {
           </button>
         </div>
         <div className="pb-10">
+          <DataTable slug="usuario" columns={columnsTabla} rows={rows} />
         </div>
       </div>
     </section>

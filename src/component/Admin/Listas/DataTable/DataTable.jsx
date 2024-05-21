@@ -40,12 +40,16 @@ const theme = createTheme(
 
 const ODD_OPACITY = 0.2;
 
-const handleDelete = (id) => {
-  //Eliminar el item
-  console.log("Eliminando el item con id: ", id);
-};
+
 
 const DataTable = ({ slug, columns, rows }) => {
+  const [open, setOpen] = React.useState(false);
+  const handleDelete = (id) => {
+    //Eliminar el item
+    console.log("Eliminando el item con id: ", id);
+    setOpen(true);
+  };
+
   const actionColumn = {
     field: "acciones",
     headerName: "Acciones",

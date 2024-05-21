@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
 import { useNavigate } from "react-router-dom";
+import { novedad } from "./Novedad";
 
 const AdminNovedades = () => {
 
@@ -14,6 +15,30 @@ const AdminNovedades = () => {
 
   const [open, setOpen] = React.useState(false);
 
+  const novedadEjemplo = novedad.novedades[0];
+
+  const columnasIgnoradas = [
+    "resumen",
+    "nombreLogo",
+    "descripcion",
+    "informacionDeContacto",
+  ]; // Agrega aquí las claves que deseas ignorar
+
+  // Determinar las columnas basadas en las claves del emprendimiento seleccionado, ignorando las columnas especificadas
+  const columnsTabla = novedadEjemplo
+    ? Object.keys(novedadEjemplo)
+        .filter((key) => !columnasIgnoradas.includes(key))
+        .map((key) => ({
+          field: key,
+          headerName: key.charAt(0).toUpperCase() + key.slice(1),
+          width: 150,
+        }))
+    : [];  
+
+  const rows = novedad.novedades.map((novedad) => ({
+    ...novedad,
+    id: novedad.id,
+  }));
 
   return (
     <section className="relative flex">
@@ -44,6 +69,7 @@ const AdminNovedades = () => {
           </button>
         </div>
         <div className="pb-10">
+          <DataTable slug="novedad" columns={columnsTabla} rows={rows} />
         </div>
       </div>
     </section>

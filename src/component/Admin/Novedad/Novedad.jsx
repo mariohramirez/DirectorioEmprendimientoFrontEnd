@@ -5,20 +5,20 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientoById } from "../../State/Emprendimiento/Action";
 import { useParams } from "react-router-dom";
-import { emprendedor } from "../Listas/Emprendedor";
+import { novedad } from "../Listas/Novedad";
 
-const Emprendedor = () => {
-  
+const Novedad = () => {
+
   const { id } = useParams();
 
   return (
     <div className=" relative flex">
       <MenuAdmin />
       <div className="text-black w-[81vw] p-10">
-        <Single emprende={emprendedor.emprendedores[id]} />
+        <Single emprende={novedad.novedades[id]} />
       </div>
     </div>
   );
 };
 
-export default Emprendedor;
+export default Novedad;
