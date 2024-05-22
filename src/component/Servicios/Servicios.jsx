@@ -2,8 +2,6 @@ import React from "react";
 import TipoServicioCard from "./TipoServicio/TipoServicioCard";
 import RoleButton from "../Home/RoleButton";
 
-const backgroundUrl = "/svg/Servicios/card.svg";
-
 const titulos = [
     "Para empresas",
     "Para emprendedores",

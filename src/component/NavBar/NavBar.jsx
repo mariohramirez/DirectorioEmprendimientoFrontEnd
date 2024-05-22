@@ -23,7 +23,7 @@ export const NavBar = () => {
   };
   return (
     //En pantallas pequenas el tamano sera de px-5 y en pantallas grandes sera de px-20
-    <nav className="px-5 z-40 py-5 bg-[#026937] lg:px-10 flex items-center justify-center ">
+    <nav className="px-5 z-40 py-5 bg-[#026937] lg:px-10 flex items-center justify-center min-w-[100vw]">
       {/*Div conteniendo cada uno de los elementos del NavBar*/}
       <div className="lg:flex items-center ">
         {/*Logo de la Universidad de Antioquia*/}

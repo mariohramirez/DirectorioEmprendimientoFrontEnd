@@ -84,7 +84,7 @@ const FormularioRegistroEmprendedor = () => {
 
   return (
     <div className="">
-      <section className="banner relative flex flex-col justify-center items-center  text-black">
+      <section className="banner relative flex flex-col justify-center items-center  text-black w-[100vw]">
         <div className="w-[80vw] z-10">
           <p className="text-2xl text-black lg:text-5xl font-bold z-10 py-10 text-center">
             Directorio de emprededores y empresarios de la Facultad de

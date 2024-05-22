@@ -5,6 +5,10 @@ import { novedad } from "./Novedad";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { retrieveNovedades } from "../State/Novedades/Action";
+
 {
   /*Arreglo de imagenes a partir de las cuales se crean las slides*/
 }
@@ -19,6 +23,13 @@ const Noticias = () => {
     novedad[1].resumen,
     novedad[2].resumen,
   ];
+
+  const dispatch = useDispatch();
+  const{novedades} = useSelector(store => store);
+  console.log("Novedad: ",novedades);
+
+  useEffect(() => {dispatch(retrieveNovedades())},[])
+
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filteredNovedad, setFilteredNovedad] = useState([]);
