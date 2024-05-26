@@ -64,9 +64,9 @@ const FormularioRegistroEmprendedor = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (values) => {
-    console.log(values);
-    switch (values.rol) {
+  const handleSubmit = (rol) => {
+    console.log("ROl: ",rol);
+    switch (rol) {
       case "Emprendedor":
         navigate(`/servicios/formula rio/Registro/Emprendimiento`);
         break;

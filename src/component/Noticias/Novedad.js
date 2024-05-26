@@ -5,7 +5,7 @@ export const novedad = [
         resumen: "Descubre cómo esta nueva plataforma está revolucionando el mundo del emprendimiento.",
         informacion: "La plataforma ofrece herramientas y recursos gratuitos para ayudar a los emprendedores a iniciar y hacer crecer sus negocios. Incluye tutoriales, consejos de expertos y una comunidad activa.",
         imagen: "https://concepto.de/wp-content/uploads/2020/11/emprendimiento-e1676646759170-800x400.jpg",
-        fecha: "2024-05-10",
+        fecha: "2023-05-10",
         categoria: "Novedad",
         autor: "Equipo de Desarrollo de la Plataforma"
     },

@@ -8,7 +8,7 @@ const Home = () => {
       <section className="banner relative flex flex-col justify-center items-center">
         <div className="w-[80vw] z-10">
           <p className="text-2xl text-black lg:text-5xl font-bold z-10 py-10 text-center">
-            Unidad de innovación de la Facultad de ingenieria
+            Unidad de Innovación de la Facultad de ingenieria
           </p>
           <p className="z-10 text-black lg:text-m text-justify">
             {infoHome[0].informacion}

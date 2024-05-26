@@ -8,17 +8,15 @@ const FormularioGuardado = () => {
     <div className="">
       <section className="banner relative flex flex-col justify-center items-center">
         <div className="w-[60vw] z-10 py-10 flex flex-col items-center">
-          <div className="">
+          <div className=" mb-10">
             <img
-              src="/png/NotFound/10.png"
+              src="/svg/Registro/Startup.svg"
               alt="Not found"
               className="w-[100%] h-[100%] object-cover"
             />
           </div>
           <p className="z-10 text-black lg:text-m text-center mb-10">
-            No podemos encontrar la página que estás buscando. Si escribiste la
-            URL en tu navegador, por favor, verifica que esté escrita
-            correctamente.
+            ¡Se ha guardado exitosamente la información!, pronto la Unidad de Innovación de la Facultad de Ingeniería (UIFI) se pondrá en contacto con usted para continuar el proceso de registro. Cualquier duda que tengas, puedes escribirla al correo: emprendimiento.ing@udea.edu.co 
           </p>
           <button
             onClick={() => navigate("/")}
