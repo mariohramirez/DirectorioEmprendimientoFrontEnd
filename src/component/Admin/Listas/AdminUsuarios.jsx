@@ -1,17 +1,24 @@
 import React from "react";
 import MenuAdmin from "../Menu/MenuAdmin";
 import DataTable from "./DataTable/DataTable";
-import Add from "./Add/Add";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
-import { usuario } from "./Usuario";
+import { retrievAllUsers } from "../../State/Authentication/Action";
+import AddUsuario from "./Add/AddUsuario";
 
 const AdminUsuarios = () => {
+  const dispatch = useDispatch();
+  const { users } = useSelector((store) => store.auth);
+
+  const jwt = localStorage.getItem("jwt");
+
+  useEffect(() => {
+    dispatch(retrievAllUsers(jwt));
+  }, [])
 
   const [open, setOpen] = React.useState(false);
 
-  const usuarioEjemplo = usuario.usuarios[0];
+  const usuarioEjemplo = users[0];
 
   const columnasIgnoradas = [
     "resumen",
@@ -19,6 +26,14 @@ const AdminUsuarios = () => {
     "descripcion",
     "informacionDeContacto",
   ]; // Agrega aquí las claves que deseas ignorar
+
+  const columns = usuarioEjemplo
+    ? Object.keys(usuarioEjemplo).map((key) => ({
+        field: key,
+        headerName: key.charAt(0).toUpperCase() + key.slice(1),
+        width: 150,
+      }))
+    : [];
 
   // Determinar las columnas basadas en las claves del emprendimiento seleccionado, ignorando las columnas especificadas
   const columnsTabla = usuarioEjemplo
@@ -31,7 +46,7 @@ const AdminUsuarios = () => {
         }))
     : [];
 
-  const rows = usuario.usuarios.map((usuario) => ({
+  const rows = users.map((usuario) => ({
     ...usuario,
     id: usuario.id,
   }));
@@ -62,6 +77,9 @@ const AdminUsuarios = () => {
         </div>
         <div className="pb-10">
           <DataTable slug="usuario" columns={columnsTabla} rows={rows} />
+          {open && (
+            <AddUsuario slug="usuario" columns={columns} setOpen={setOpen} />
+          )}
         </div>
       </div>
     </section>
