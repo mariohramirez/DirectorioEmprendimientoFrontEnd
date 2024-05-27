@@ -1,6 +1,10 @@
 import { TextField, Button, Typography } from "@mui/material";
-import React from "react";
+import React, { use, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../State/Authentication/Action";
+import { useSelector } from "react-redux";
 
 const initialValues = {
   email: "",
@@ -8,8 +12,22 @@ const initialValues = {
 };
 
 export const LoginForm = () => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((store) => store.auth.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+      window.location.reload();
+    }
+  }, [isAuthenticated, navigate]);
   
-  const handleSubmit = () => {};
+  const handleSubmit = (values) => {
+    console.log(values);
+    dispatch(loginUser({userData: values}));
+  };
 
   return (
     <div >
@@ -20,7 +38,8 @@ export const LoginForm = () => {
         <Form className="flex flex-col gap-5 justify-center items-center text-black mt-5">
           <Field
             as={TextField}
-            name="correo"
+            required
+            name="email"
             label="Correo"
             fullWidth
             variant="outlined"
@@ -28,7 +47,8 @@ export const LoginForm = () => {
           />
           <Field
             as={TextField}
-            name="contraseña"
+            required
+            name="password"
             label="Contraseña"
             fullWidth
             variant="outlined"
@@ -36,7 +56,7 @@ export const LoginForm = () => {
           />
           <Button
             sx={{padding: "1rem", backgroundColor: "#026937", color: "white"}}
-            fullWdith
+            fullWidth
             type="submit"
             variant="contained"
           >

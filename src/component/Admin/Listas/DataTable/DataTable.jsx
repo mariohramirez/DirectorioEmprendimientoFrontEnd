@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { ThemeProvider, createTheme, alpha } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { deletUser } from "../../../State/Authentication/Action";
 
 const theme = createTheme(
   {
@@ -43,9 +45,25 @@ const ODD_OPACITY = 0.2;
 
 
 const DataTable = ({ slug, columns, rows }) => {
+
+  const dispatch = useDispatch();
+
+  const jwt = localStorage.getItem("jwt");
+
   const [open, setOpen] = React.useState(false);
   const handleDelete = (id) => {
     //Eliminar el item
+    switch (slug) {
+      case "emprendimientos":
+        //dispatch(deleteEmprendimiento(id));
+        break;
+      case "usuario":
+        dispatch(deletUser(jwt, { userId: id }));
+        window.location.reload();
+        break;
+      default:
+        break;
+    }
     console.log("Eliminando el item con id: ", id);
     setOpen(true);
   };
