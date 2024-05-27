@@ -10,6 +10,8 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { app } from "../../../../utils/firebase";
+import { useDispatch } from "react-redux";
+import { createNovedad } from "../../../State/Novedades/Action";
 
 const storage = getStorage(app);
 
@@ -17,15 +19,19 @@ const WritePage = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("NOVEDAD");
 
   const [fileName, setFileName] = useState("");
 
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
 
+  const dispatch = useDispatch();
+
+  const jwt = localStorage.getItem("jwt");
+
   const initialValues = {
-    categoria: "",
+    categoria: "NOVEDAD",
     titulo: "",
     descripcion: "",
     img_url: "",
@@ -111,7 +117,8 @@ const WritePage = () => {
     initialValues.cuerpo = value;
     initialValues.img_url = media;
     initialValues.categoria = category;
-    console.log(initialValues);
+    dispatch(createNovedad(jwt, {novedadData: initialValues}));
+    console.log("JEJEJEJE",initialValues);
   };
 
   const getShortLink = (url) => {
@@ -137,9 +144,9 @@ const WritePage = () => {
               style={{ width: "max-content" }}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="Novedad">Novedades</option>
-              <option value="Evento">Eventos</option>
-              <option value="Convocatoria">Convocatorias</option>
+              <option value="NOVEDAD">Novedades</option>
+              <option value="EVENTO">Eventos</option>
+              <option value="CONVOCATORIA">Convocatorias</option>
             </select>
           </div>
           <div className="flex items-center justify-center align-middle gap-5">

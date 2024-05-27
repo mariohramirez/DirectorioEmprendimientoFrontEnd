@@ -8,6 +8,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { ThemeProvider, createTheme, alpha } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { deletUser } from "../../../State/Authentication/Action";
+import { deleteNovedad } from "../../../State/Novedades/Action";
 
 const theme = createTheme(
   {
@@ -61,6 +62,8 @@ const DataTable = ({ slug, columns, rows }) => {
         dispatch(deletUser(jwt, { userId: id }));
         window.location.reload();
         break;
+      case "novedad":
+        dispatch(deleteNovedad(jwt, { novedadId: id }));
       default:
         break;
     }
