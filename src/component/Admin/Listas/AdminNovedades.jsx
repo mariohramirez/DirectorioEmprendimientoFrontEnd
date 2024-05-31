@@ -1,27 +1,32 @@
 import React from "react";
 import MenuAdmin from "../Menu/MenuAdmin";
 import DataTable from "./DataTable/DataTable";
-import Add from "./Add/Add";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
 import { useNavigate } from "react-router-dom";
-import { novedad } from "./Novedad";
+import { retrieveNovedades } from "../../State/Novedades/Action";
 
 const AdminNovedades = () => {
+
+  const dispatch = useDispatch();
+  const { novedades } = useSelector((store) => store.novedad);
+
+  useEffect(() => {
+    dispatch(retrieveNovedades());
+  }, []);
+
+  console.log("Novedades: ", novedades);
 
   const navigate = useNavigate();
 
 
   const [open, setOpen] = React.useState(false);
 
-  const novedadEjemplo = novedad.novedades[0];
+  const novedadEjemplo = novedades[0];
 
   const columnasIgnoradas = [
-    "resumen",
-    "nombreLogo",
-    "descripcion",
-    "informacionDeContacto",
+    "img_url",
+    "cuerpo",
   ]; // Agrega aquí las claves que deseas ignorar
 
   // Determinar las columnas basadas en las claves del emprendimiento seleccionado, ignorando las columnas especificadas
@@ -35,7 +40,7 @@ const AdminNovedades = () => {
         }))
     : [];  
 
-  const rows = novedad.novedades.map((novedad) => ({
+  const rows = novedades.map((novedad) => ({
     ...novedad,
     id: novedad.id,
   }));

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const APIR_URL = "https://directorioemprendimiento-production.up.railway.app/"
-//export const APIR_URL = "http://localhost:8080/"
+//export const APIR_URL = "https://directorioemprendimiento-production.up.railway.app/"
+export const APIR_URL = "http://localhost:8080/"
 
 
 export const api=axios.create({

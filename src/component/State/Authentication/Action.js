@@ -55,7 +55,6 @@ export const retrieveUser = (jwt) => async (dispatch) => {
                 Authorization: `Bearer ${jwt}`
             }
         })
-        // Asegúrate de que 'data' contiene los datos correctos del usuario
         dispatch({ type: RETRIEVE_USER_SUCCESS, payload: data })
         console.log("Perfil de usuario", data);
     } catch (error) {
@@ -72,7 +71,6 @@ export const retrieveUserById = (jwt, reqData) => async (dispatch) => {
                 Authorization: `Bearer ${jwt}`
             }
         })
-        // Asegúrate de que 'data' contiene los datos correctos del usuario
         dispatch({ type: RETRIEVE_USER_BY_ID_SUCCESS, payload: data })
         console.log("Usuario", data);
     } catch (error) {
@@ -110,7 +108,6 @@ export const retrievAllUsers = (jwt) => async (dispatch) => {
 export const deletUser = (jwt, reqData) =>  async (dispatch) => {
         dispatch({ type: DELETE_USER_REQUEST });
         try {
-            console.log("REQQQQ", reqData.userId)
             const res = await api.delete(`api/usuarios/${reqData.userId}`, {
                 headers: {
                     Authorization: `Bearer ${jwt}`

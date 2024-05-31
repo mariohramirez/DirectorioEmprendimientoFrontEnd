@@ -4,7 +4,16 @@ import { useNavigate } from "react-router-dom";
 const ListaNoticia = ({ novedad }) => {
   const navigate = useNavigate();
 
-  const tituloParaRuta = novedad.titulo.replace(/\s+/g, '-').toLowerCase();
+  const tituloParaRuta = novedad.titulo.replace(/\s+/g, "-").toLowerCase();
+
+  const categoria = novedad?.categoria;
+  const formattedCategoria =
+    categoria.charAt(0).toUpperCase() + categoria.slice(1).toLowerCase();
+
+  const descripcion = novedad?.descripcion;
+  const formattedDescripcion = descripcion
+    ? new DOMParser().parseFromString(descripcion, "text/html").body.innerText
+    : "";
 
   return (
     <div className="flex flex-row w-[80vw] border-t-2 border-b-2 border-[#026937] py-2">
@@ -13,14 +22,14 @@ const ListaNoticia = ({ novedad }) => {
           onClick={() =>
             navigate(
               `/novedades/${novedad.categoria}/${tituloParaRuta}/${novedad.id}`
-              )
+            )
           }
           className="w-full h-full object-cover z-10 cursor-pointer"
-          src={novedad.imagen}
+          src={novedad.img_url}
           alt="Foto"
         />
         <div className="absolute inset-0  z-20 bg-[#026937] h-[2rem] w-[70%]">
-          <p className=" text-white text-lg font-bold">{novedad.categoria}</p>
+          <p className=" text-white text-lg font-bold">{formattedCategoria}</p>
         </div>
       </div>
       <div className="w-[66vw] px-2 relative">
@@ -28,13 +37,13 @@ const ListaNoticia = ({ novedad }) => {
           onClick={() =>
             navigate(
               `/novedades/${novedad.categoria}/${tituloParaRuta}/${novedad.id}`
-              )
+            )
           }
           className="text-4xl font-bold text-[#026937] cursor-pointer"
         >
           {novedad.titulo}
         </p>
-        <p className="text-lg text-black">{novedad.resumen}</p>
+        <p className="text-lg text-black">{formattedDescripcion}</p>
         <div className="absolute bottom-0 right-0">
           <button
             onClick={() =>

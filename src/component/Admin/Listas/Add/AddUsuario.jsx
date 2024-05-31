@@ -60,6 +60,7 @@ const AddUsuario = ({ slug, setOpen }) => {
               required
               name="password"
               label="Contraseña"
+              type="password"
               fullWidth
               variant="outlined"
               margin="normal"

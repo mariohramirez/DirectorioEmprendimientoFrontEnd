@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientoById } from "../../State/Emprendimiento/Action";
 import { useParams } from "react-router-dom";
-import { novedad } from "../Listas/Novedad";
 
 const Novedad = () => {
 
@@ -15,7 +14,7 @@ const Novedad = () => {
     <div className=" relative flex">
       <MenuAdmin />
       <div className="text-black w-[81vw] p-10">
-        <Single emprende={novedad.novedades[id]} />
+        {/*<Single emprende={novedad.novedades[id]} />*/}
       </div>
     </div>
   );
