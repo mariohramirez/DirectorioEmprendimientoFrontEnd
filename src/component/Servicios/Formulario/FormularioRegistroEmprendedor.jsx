@@ -1,17 +1,14 @@
-import { Formik, Form, Field } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import {
   RadioGroup,
   FormControlLabel,
   Radio,
   TextField,
   Button,
-  Select,
-  MenuItem,
 } from "@mui/material";
 import styled from "@mui/material/styles/styled";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { genero, programas, roles } from "./data";
 
 const CustomTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
@@ -34,57 +31,49 @@ const StyledRadio = styled(Radio)({
   color: "black",
 });
 
-const StyledSelect = styled(Select)({
-  "& .MuiOutlinedInput-root": {
-    backgroundColor: "white",
-    color: "black",
-    "& fieldset": {
-      borderColor: "black",
-    },
-    "&:hover fieldset": {
-      borderColor: "#026937",
-    },
-    "& input": {
-      color: "black",
-    },
-  },
-});
-
 const FormularioRegistroEmprendedor = () => {
-  const [vinculo, setVinculo] = useState("Externo");
-  const [rol, setRol] = useState("");
-
-  const handleVinculoChange = (event) => {
-    setVinculo(event.target.value);
-  };
-
-  const handleRolChange = (event) => {
-    setRol(event.target.value);
-  };
+  const [formData, setFormData] = useState({
+    nombres: "",
+    apellidos: "",
+    tipoDocumento: "Cedula",
+    numeroDocumento: "",
+    correo: "",
+    telefono: "",
+    vinculo: "Externo",
+    dependencia: "",
+    tipoPrograma: "Pregrado",
+    programa: "",
+    rol: "Nuevo",
+    genero: ""
+  });
 
   const navigate = useNavigate();
 
-  const handleSubmit = (rol) => {
-    console.log("ROl: ",rol);
-    switch (rol) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data: ", formData);
+    switch (formData.rol) {
       case "Emprendedor":
-        navigate(`/servicios/formula rio/Registro/Emprendimiento`);
-        break;
       case "Empresario":
-        navigate(`/servicios/formulario/Registro/Emprendimiento`);
+        navigate(`/servicios/formulario/Registro/Emprendimiento`, { state: { formData } });
         break;
       case "Independiente":
-        navigate(`/servicios/formulario/Registro/Profesional`);
+        navigate(`/servicios/formulario/Registro/Profesional`, { state: { formData } });
         break;
       default:
-        navigate(`/servicios/formulario/Registro/Emprendimiento`);
+        navigate(`/servicios/formulario/Registro/Emprendimiento`, { state: { formData } });
         break;
     }
   };
 
   return (
     <div className="">
-      <section className="banner relative flex flex-col justify-center items-center  text-black w-[100vw]">
+      <section className="banner relative flex flex-col justify-center items-center text-black w-[100vw]">
         <div className="w-[80vw] z-10">
           <p className="text-2xl text-black lg:text-5xl font-bold z-10 py-10 text-center">
             Directorio de emprededores y empresarios de la Facultad de
@@ -99,26 +88,26 @@ const FormularioRegistroEmprendedor = () => {
             <br />
             <span>
               Beneficios por integrar la comunidad de emprendedores de la
-              Facultad:{" "}
+              Facultad:
             </span>
             <br />
             <ul>
               <li>
                 🔹 Visibilidad en el directorio alojado en el portal
-                institucional https://bit.ly/DirectorioEmprendedoresING{" "}
+                institucional https://bit.ly/DirectorioEmprendedoresING
               </li>
-              <li>🔹 Formación en temas de emprendimiento e innovación. </li>
+              <li>🔹 Formación en temas de emprendimiento e innovación.</li>
               <li>
-                🔹 Acompañamiento para fortalecer tu emprendimiento o empresa{" "}
+                🔹 Acompañamiento para fortalecer tu emprendimiento o empresa
               </li>
               <li>
-                🔹 Te ayudamos conectar con el ecosistema de emprendimiento{" "}
+                🔹 Te ayudamos conectar con el ecosistema de emprendimiento
               </li>
               <li>
                 🔹 Estar al tanto de las convocatorias y oportunidades para los
-                emprendedores{" "}
+                emprendedores
               </li>
-              <li>🔹 Networking </li>
+              <li>🔹 Networking</li>
               <li>
                 🔹 Conocer a otros emprendedores que puedan ser tus proveedores
                 o clientes.
@@ -127,7 +116,7 @@ const FormularioRegistroEmprendedor = () => {
             <br />
             <span>
               Nota: Te indicaremos los campos o la información que será visible
-              en el directorio{" "}
+              en el directorio
             </span>
             <br />
             <span>
@@ -138,13 +127,13 @@ const FormularioRegistroEmprendedor = () => {
               transacciones comerciales que puedan surgir como resultado de esta
               Directorio serán responsabilidad exclusiva del emprendedor y la
               parte que lo haya contactado. La Facultad no asume responsabilidad
-              alguna en este contexto.{" "}
+              alguna en este contexto.
             </span>
             <br />
             <span>
               Esta es una iniciativa de la Unidad de Innovación, con el apoyo
               del Programa de Egresados y la Unidad de Comunicaciones de la
-              Facultad de Ingeniería.{" "}
+              Facultad de Ingeniería.
             </span>
             <br />
             <span>
@@ -162,291 +151,224 @@ const FormularioRegistroEmprendedor = () => {
               Este directorio es exclusivo para personas que tienen vínculo con
               la Facultad de Ingeniería de la Universidad de Antioquia
             </span>
-            <Formik
-              initialValues={{
-                nombreCompleto: "",
-                tipoDocumento: "",
-                numeroDocumento: "",
-                correo: "",
-                telefono: "",
-                vinculo: "Externo",
-                dependencia: "",
-                tipoPrograma: "",
-                programa: "",
-                rol: "",
-              }}
-              onSubmit={handleSubmit}
-              className="text-black"
-            >
-              <Form>
-                <div>
-                  <label>Nombre completo</label>
-                  <Field
-                    required
-                    as={CustomTextField}
-                    name="nombreCompleto"
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
+            <form onSubmit={handleSubmit} className="text-black">
+              <div>
+                <label>Nombres</label>
+                <CustomTextField
+                  required
+                  name="nombres"
+                  value={formData.nombres}
+                  onChange={handleChange}
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                />
+              </div>
+              <div>
+                <label>Apellidos</label>
+                <CustomTextField
+                  required
+                  name="apellidos"
+                  value={formData.apellidos}
+                  onChange={handleChange}
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                />
+              </div>
+              <div>
+                <label>Tipo de documento</label>
+                <RadioGroup
+                  name="tipoDocumento"
+                  value={formData.tipoDocumento}
+                  onChange={handleChange}
+                >
+                  <FormControlLabel
+                    value="CC"
+                    control={<StyledRadio />}
+                    label="Cédula de ciudadania"
                   />
-                </div>
-                <div>
-                  <label>Tipo de documento</label>
-                  <Field
-                    required
-                    as={RadioGroup}
-                    name="tipoDocumento"
-                    defaultValue="Cedula"
-                  >
-                    <FormControlLabel
-                      value="Cedula"
-                      control={<StyledRadio />}
-                      label="Cédula de ciudadania"
-                    />
-                    <FormControlLabel
-                      value="Tarjeta"
-                      control={<StyledRadio />}
-                      label="Tarjeta de Identidad"
-                    />
-                  </Field>
-                </div>
-                <div>
-                  <label>Numero de Documento</label>
-                  <Field
-                    required
-                    as={CustomTextField}
-                    name="numeroDocumento"
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
+                  <FormControlLabel
+                    value="TI"
+                    control={<StyledRadio />}
+                    label="Tarjeta de Identidad"
                   />
-                </div>
-                <div>
-                  <label>Correo electronico del emprendedor</label>
-                  <Field
-                    required
-                    as={CustomTextField}
-                    name="correo"
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
+                </RadioGroup>
+              </div>
+              <div>
+                <label>Numero de Documento</label>
+                <CustomTextField
+                  required
+                  name="numeroDocumento"
+                  value={formData.numeroDocumento}
+                  onChange={handleChange}
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                />
+              </div>
+              <div>
+                    <label>Genero</label>
+                    <select
+                      name="genero"
+                      value={formData.genero}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-black hover:border-[#026937] focus:border-[#026937] focus:border-2 px-5 py-5 rounded-md"
+                    >
+                      {genero.map((opcion) => (
+                        <option key={opcion.value} value={opcion.value}>
+                          {opcion.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+              <div>
+                <label>Correo electronico del emprendedor</label>
+                <CustomTextField
+                  required
+                  name="correo"
+                  value={formData.correo}
+                  onChange={handleChange}
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                />
+              </div>
+              <div>
+                <label>Telefono de contacto</label>
+                <CustomTextField
+                  required
+                  name="telefono"
+                  value={formData.telefono}
+                  onChange={handleChange}
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                />
+              </div>
+              <div>
+                <label>Vinculo con la Facultad</label>
+                <RadioGroup
+                  name="vinculo"
+                  value={formData.vinculo}
+                  onChange={handleChange}
+                >
+                  <FormControlLabel
+                    value="Estudiante"
+                    control={<StyledRadio />}
+                    label="Estudiante"
                   />
-                </div>
-                <div>
-                  <label>Telefono de contacto</label>
-                  <Field
-                    required
-                    as={CustomTextField}
-                    name="telefono"
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
+                  <FormControlLabel
+                    value="Egresado"
+                    control={<StyledRadio />}
+                    label="Egresado"
                   />
-                </div>
-                <div>
-                  <label>Vinculo con la Facultad</label>
-                  <Field
-                    required
-                    as={RadioGroup}
-                    name="vinculo"
-                    value={vinculo}
-                    defaultValue="Externo"
-                    onChange={handleVinculoChange}
-                  >
-                    <FormControlLabel
-                      value="Estudiante"
-                      control={<StyledRadio />}
-                      label="Estudiante"
-                    />
-                    <FormControlLabel
-                      value="Egresado"
-                      control={<StyledRadio />}
-                      label="Egresado"
-                    />
-                    <FormControlLabel
-                      value="Docente"
-                      control={<StyledRadio />}
-                      label="Docente"
-                    />
-                    <FormControlLabel
-                      value="Administrativo"
-                      control={<StyledRadio />}
-                      label="Administrativo"
-                    />
-                    <FormControlLabel
-                      value="Externo"
-                      control={<StyledRadio />}
-                      label="Externo"
-                    />
-                  </Field>
-                </div>
-                {vinculo !== "Externo" && (
-                  <>
-                    {(vinculo === "Administrativo" ||
-                      vinculo === "Docente") && (
-                      <div>
-                        <label>Dependencia en la que trabaja</label>
-                        <Field
-                          required
-                          as={CustomTextField}
-                          name="dependencia"
-                          fullWidth
-                          variant="outlined"
-                          margin="normal"
-                        />
-                      </div>
-                    )}
-
+                  <FormControlLabel
+                    value="Docente"
+                    control={<StyledRadio />}
+                    label="Docente"
+                  />
+                  <FormControlLabel
+                    value="Administrativo"
+                    control={<StyledRadio />}
+                    label="Administrativo"
+                  />
+                  <FormControlLabel
+                    value="Externo"
+                    control={<StyledRadio />}
+                    label="Externo"
+                  />
+                </RadioGroup>
+              </div>
+              {formData.vinculo !== "Externo" && (
+                <>
+                  {(formData.vinculo === "Administrativo" ||
+                    formData.vinculo === "Docente") && (
                     <div>
-                      <label>Tipo de programa academico</label>
-                      <Field
+                      <label>Dependencia en la que trabaja</label>
+                      <CustomTextField
                         required
-                        as={RadioGroup}
-                        name="tipoPrograma"
-                        defaultValue="Pregrado"
-                      >
-                        <FormControlLabel
-                          value="Pregrado"
-                          control={<StyledRadio />}
-                          label="Pregrado"
-                        />
-                        <FormControlLabel
-                          value="Posgrado"
-                          control={<StyledRadio />}
-                          label="Posgrado"
-                        />
-                      </Field>
-                    </div>
-                    <div>
-                      <label>Programa academico</label>
-                      <Field
-                        required
-                        as={StyledSelect}
-                        name="programa"
+                        name="dependencia"
+                        value={formData.dependencia}
+                        onChange={handleChange}
                         fullWidth
                         variant="outlined"
                         margin="normal"
-                      >
-                        <MenuItem value="Bioingeniería">Bioingeniería</MenuItem>
-                        <MenuItem value="Ingeniería Aeroespacial">
-                          Ingenieria Aeroespacial
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Agroindustrial">
-                          Ingenieria Agroindustrial
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Ambiental">
-                          Ingenieria Ambiental
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Bioquímica">
-                          Ingenieria Bioquímica
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Civil">
-                          Ingenieria Civil
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Energética">
-                          Ingenieria Energética
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Eléctica">
-                          Ingenieria Eléctrica
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Electrónica">
-                          Ingenieria Electrónica
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Industrial">
-                          Ingenieria Industrial
-                        </MenuItem>
-                        <MenuItem value="Ingeniería de Materiales">
-                          Ingenieria de Materiales
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Mecánica">
-                          Ingenieria Mecánica
-                        </MenuItem>
-                        <MenuItem value="Ingeniería de Oceanográfica">
-                          Ingenieria de Oceanográfica
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Química">
-                          Ingenieria Química
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Sanitaria">
-                          Ingenieria Sanitaria
-                        </MenuItem>
-                        <MenuItem value="Ingeniería de Sistemas">
-                          Ingenieria de Sistemas
-                        </MenuItem>
-                        <MenuItem value="Ingeniería de Telecomunicaciones">
-                          Ingenieria de Telecomunicaciones
-                        </MenuItem>
-                        <MenuItem value="Ingeniería Urbana">
-                          Ingenieria Urbana
-                        </MenuItem>
-                        <MenuItem value="Tecnología Agroindustrial">
-                          Tecnología Agroindustrial
-                        </MenuItem>
-                        <MenuItem value="Tecnología Biomédica">
-                          Tecnología Biomédica
-                        </MenuItem>
-                      </Field>
+                      />
                     </div>
-                    <div>
-                      <label>Con que rol te identificas</label>
-                      <Field
-                        required
-                        as={RadioGroup}
-                        name="rol"
-                        value={rol}
-                        onChange={handleRolChange}
-                        defaultValue="Nuevo"
-                      >
+                  )}
+                  <div>
+                    <label>Tipo de programa academico</label>
+                    <RadioGroup
+                      name="tipoPrograma"
+                      value={formData.tipoPrograma}
+                      onChange={handleChange}
+                    >
+                      <FormControlLabel
+                        value="Pregrado"
+                        control={<StyledRadio />}
+                        label="Pregrado"
+                      />
+                      <FormControlLabel
+                        value="Posgrado"
+                        control={<StyledRadio />}
+                        label="Posgrado"
+                      />
+                    </RadioGroup>
+                  </div>
+                  <div>
+                    <label>Programa academico</label>
+                    <select
+                      name="programa"
+                      value={formData.programa}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-black hover:border-[#026937] focus:border-[#026937] focus:border-2 px-5 py-5 rounded-md"
+                    >
+                      {programas.map((opcion) => (
+                        <option key={opcion.value} value={opcion.value}>
+                          {opcion.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Con que rol te identificas</label>
+                    <RadioGroup
+                      name="rol"
+                      value={formData.rol}
+                      onChange={handleChange}
+                    >
+                      {roles.map((rol) => (
                         <FormControlLabel
-                          value="Nuevo"
+                          key={rol.value}
+                          value={rol.value}
                           control={<StyledRadio />}
-                          label="Quiero emprender, necesito acompanamiento"
+                          label={rol.label}
                         />
-                        <FormControlLabel
-                          value="Practicante"
-                          control={<StyledRadio />}
-                          label="Practicante de empresarismo"
-                        />
-                        <FormControlLabel
-                          value="Emprendedor"
-                          control={<StyledRadio />}
-                          label="Emprendedor: Estoy creando un negocio / Ya estoy vendiendo un producto o servicio"
-                        />
-                        <FormControlLabel
-                          value="Empresario"
-                          control={<StyledRadio />}
-                          label="Empresario: Tengo una empresa constituida y en operación"
-                        />
-                        <FormControlLabel
-                          value="Independiente"
-                          control={<StyledRadio />}
-                          label="Profesional independiente: Profesional que presta servicios de manera autónoma"
-                        />
-                      </Field>
-                    </div>
-                  </>
-                )}
-                <div>
-                  <Button
-                    sx={{
-                      padding: "1rem",
-                      backgroundColor: "#026937",
-                      color: "white",
-                      width: "100%",
-                    }}
-                    fullWdith
-                    type="submit"
-                    variant="contained"
-                  >
-                    {vinculo === "Externo" ||
-                    rol === "Nuevo" ||
-                    rol === "Practicante"
-                      ? "Enviar"
-                      : "Siguiente"}
-                  </Button>
-                </div>
-              </Form>
-            </Formik>
+                      ))}
+                    </RadioGroup>
+                  </div>
+                </>
+              )}
+              <div>
+                <Button
+                  sx={{
+                    padding: "1rem",
+                    backgroundColor: "#026937",
+                    color: "white",
+                    width: "100%",
+                  }}
+                  type="submit"
+                  variant="contained"
+                >
+                  {formData.vinculo === "Externo" ||
+                  formData.rol === "Nuevo" ||
+                  formData.rol === "Practicante"
+                    ? "Enviar"
+                    : "Siguiente"}
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       </section>

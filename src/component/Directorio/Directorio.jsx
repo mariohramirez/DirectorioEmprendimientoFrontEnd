@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { retrieveEmprendimientos } from "../State/Emprendimiento/Action";
 import { useState } from "react";
 
-const filtro = [1, 1, 1];
+const filtro = [];
 const Directorio = () => {
 
   const dispatch = useDispatch();
