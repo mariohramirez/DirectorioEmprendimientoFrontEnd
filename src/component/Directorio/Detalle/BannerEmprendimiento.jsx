@@ -3,13 +3,13 @@ import React from "react";
 {/*Banner para cada uno de los emprendimientos, el primer div contiene la imagen que servira
 de banner, el segundo contiene el logo, centrado en el medio de la imagen, los valores
 inset permiten mover el logo por fuera del div que lo contiene*/}
-const BannerEmprendimiento = () => {
+const BannerEmprendimiento = ({imagen}) => {
   return (
     
     <div className="relative w-[84vw] bg-blue-300">
       <img
         className="w-full h-[15rem] rounded-t-md object-cover"
-        src="/jpg/FotosMiniatura/fotoNoticia.jpg"
+        src={imagen?.banner}
         alt="Foto"
       />
       <div
@@ -18,7 +18,7 @@ const BannerEmprendimiento = () => {
       >
         <img
           className="w-[80%]"
-          src="/png/Logos/logoipsum-300.png"
+          src={imagen?.nombreLogo}
           alt="Logo"
         />
       </div>

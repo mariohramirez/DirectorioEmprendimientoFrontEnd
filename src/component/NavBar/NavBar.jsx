@@ -12,7 +12,7 @@ const menu = [
   //{ title: "Administracion" },
 ];
 
-export const NavBar = () => {
+const NavBar = ({ onOpenModal }) => {
   const { auth } = useSelector((store) => store);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -66,7 +66,13 @@ export const NavBar = () => {
             style={{ boxShadow: "0px 4px 5px 0px rgba(0, 0, 0, 0.7)" }}
             title="Ingresar"
             name="Ingresar"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => {
+              if (auth.user) {
+                setIsMenuOpen(!isMenuOpen);
+              } else {
+                onOpenModal();
+              }
+            }}
           >
             <div className="mx-4 my-2 flex flex-row gap-[10px] items-center justify-center">
               <span>
@@ -77,10 +83,7 @@ export const NavBar = () => {
                   {auth.user?.fullName}
                 </span>
               ) : (
-                <span
-                  onClick={() => navigate("/login")}
-                  className="font-roboto-slab text-base"
-                >
+                <span className="font-roboto-slab text-base">
                   Ingresar
                 </span>
               )}

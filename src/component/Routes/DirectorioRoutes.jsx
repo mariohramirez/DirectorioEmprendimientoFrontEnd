@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import { Route } from "react-router-dom";
 import Footer from "../Footer/Footer";
@@ -27,11 +27,23 @@ import FormularioGuardado from "../Servicios/Formulario/FormularioGuardado";
 import FormularioRegistroEmprendimiento from "../Servicios/Formulario/FormularioRegistroEmprendimiento";
 import Novedad from "../Admin/Novedad/Novedad";
 import Usuario from "../Admin/Usuario/Usuario";
+import AdminProcesos from "../Admin/Listas/Procesos/AdminProcesos";
+import Proceso from "../Admin/Listas/Procesos/Proceso";
 
 export const DirectorioRoutes = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
-      <NavBar />
+      <NavBar onOpenModal={handleOpenModal} />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -46,27 +58,36 @@ export const DirectorioRoutes = () => {
           element={<DetalleNoticia />}
         />
         <Route path="/servicios" element={<Servicios />} />
-        <Route path="/servicios/formulario/Registro/Emprendedor" element={<FormularioRegistroEmprendedor />} />
-        <Route path="/servicios/formulario/Registro/Profesional" element={<FormularioRegistroIndependiente />} />
-        <Route path="/servicios/formulario/Registro/Emprendimiento" element={<FormularioRegistroEmprendimiento />} />
-        <Route path="/servicios/formulario/Registro/Guardado" element={<FormularioGuardado />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        <Route
+          path="/servicios/formulario/Registro/Emprendedor"
+          element={<FormularioRegistroEmprendedor />}
+        />
+        <Route
+          path="/servicios/formulario/Registro/Profesional"
+          element={<FormularioRegistroIndependiente />}
+        />
+        <Route
+          path="/servicios/formulario/Registro/Emprendimiento"
+          element={<FormularioRegistroEmprendimiento />}
+        />
+        <Route
+          path="/servicios/formulario/Registro/Guardado"
+          element={<FormularioGuardado />}
+        />
+        <Route path="/admin" element={<AdminProcesos />} />
         <Route
           path="/admin/emprendimientos"
           element={<AdminEmprendimientos />}
         />
         <Route path="/admin/novedades" element={<AdminNovedades />} />
-        <Route
-          path="/admin/novedades/novedad/:id"
-          element={<Novedad />}
-        />
+        <Route path="/admin/novedades/novedad/:id" element={<Novedad />} />
         <Route path="/admin/novedades/agregar" element={<WritePage />} />
         <Route path="/admin/usuarios" element={<AdminUsuarios />} />
         <Route path="/admin/usuarios/usuario/:id" element={<Usuario />} />
+        <Route path="/admin/proceso/:id" element={<Proceso />} />
         <Route path="/admin/emprendedores" element={<AdminEmprendedores />} />
-        <Route path="/admin/emprendedores/emprendedor/:id" element={<Emprendedor />} />
         <Route
-          path="/admin/emprendedores/emprendedores/:id"
+          path="/admin/emprendedores/emprendedor/:id"
           element={<Emprendedor />}
         />
         <Route path="/admin/reportes" element={<Reportes />} />
@@ -77,7 +98,9 @@ export const DirectorioRoutes = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-      <Auth />
+      <Auth isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 };
+
+export default DirectorioRoutes;

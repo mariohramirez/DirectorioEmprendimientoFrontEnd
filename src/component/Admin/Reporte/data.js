@@ -1,4 +1,4 @@
-export const reportes = [
+export const reportesPrueba = [
     {
         id: 1,
         tipoDatos: [

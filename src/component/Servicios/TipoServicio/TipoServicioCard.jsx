@@ -26,12 +26,12 @@ const TipoServicioCard = ({ title, text }) => {
         style={{ clipPath: "url(#benefits)" }}
       >
         <div className="absolute inset-0 opacity-0 transition-opacity hover:opacity-10 duration-200 ease-in">
-          <img
+          {/*<img
             src="/png/Logos/logoipsum-300.png"
             width={380}
             height={362}
             className="w-full h-full object-cover"
-          />
+  />*/}
         </div>
       </div>
     </div>

@@ -1,0 +1,65 @@
+export const programas = [
+  { value: "Bioingeniería", label: "Bioingeniería" },
+  { value: "Ingeniería Aeroespacial", label: "Ingeniería Aeroespacial" },
+  { value: "Ingeniería Agroindustrial", label: "Ingeniería Agroindustrial" },
+  { value: "Ingeniería Ambiental", label: "Ingeniería Ambiental" },
+  { value: "Ingeniería Bioquímica", label: "Ingeniería Bioquímica" },
+  { value: "Ingeniería Civil", label: "Ingeniería Civil" },
+  { value: "Ingeniería Energética", label: "Ingeniería Energética" },
+  { value: "Ingeniería Eléctrica", label: "Ingeniería Eléctrica" },
+  { value: "Ingeniería Electrónica", label: "Ingeniería Electrónica" },
+  { value: "Ingeniería Industrial", label: "Ingeniería Industrial" },
+  { value: "Ingeniería de Materiales", label: "Ingeniería de Materiales" },
+  { value: "Ingeniería Mecánica", label: "Ingeniería Mecánica" },
+  { value: "Ingeniería Oceanográfica", label: "Ingeniería Oceanográfica" },
+  { value: "Ingeniería Química", label: "Ingeniería Química" },
+  { value: "Ingeniería Sanitaria", label: "Ingeniería Sanitaria" },
+  { value: "Ingeniería de Sistemas", label: "Ingeniería de Sistemas" },
+  { value: "Ingeniería de Telecomunicaciones", label: "Ingeniería de Telecomunicaciones" },
+  { value: "Ingeniería Urbana", label: "Ingeniería Urbana" },
+  { value: "Tecnología Agroindustrial", label: "Tecnología Agroindustrial" },
+  { value: "Tecnología Biomédica", label: "Tecnología Biomédica" },
+];
+
+export const roles = [
+    { value: "Nuevo", label: "Quiero emprender, necesito acompañamiento" },
+    { value: "Practicante", label: "Practicante de empresarismo" },
+    { value: "Emprendedor", label: "Emprendedor: Estoy creando un negocio / Ya estoy vendiendo un producto o servicio" },
+    { value: "Empresario", label: "Empresario: Tengo una empresa constituida y en operación" },
+    { value: "Independiente", label: "Profesional independiente: Profesional que presta servicios de manera autónoma" },
+  ];
+
+export const genero = [
+  { value: "Masculino", label: "Masculino"},
+  { value: "Femenino", label: "Femenino"},
+  { value: "Otro", label: "Otro"},
+]
+
+export const programasPosgrado = [
+  { value: "Doctorado en Ingeniería", label: "Doctorado en Ingeniería" },
+  { value: "Doctorado en Ingeniería Ambiental", label: "Doctorado en Ingeniería Ambiental" },
+  { value: "Doctorado en Ingeniería De Materiales", label: "Doctorado en Ingeniería De Materiales" },
+  { value: "Doctorado en Ingeniería Electrónica y de Computación", label: "Doctorado en Ingeniería Electrónica y de Computación" },
+  { value: "Doctorado en Ingeniería Química", label: "Doctorado en Ingeniería Química" },
+  { value: "Maestría en Gestión Ambiental", label: "Maestría en Gestión Ambiental" },
+  { value: "Maestría en Ingeniería", label: "Maestría en Ingeniería" },
+  { value: "Maestría en Ingeniería Ambiental", label: "Maestría en Ingeniería Ambiental" },
+  { value: "Maestría en Ingeniería De Materiales", label: "Maestría en Ingeniería De Materiales" },
+  { value: "Maestría en Ingeniería de Telecomunicaciones", label: "Maestría en Ingeniería de Telecomunicaciones" },
+  { value: "Maestría en Ingeniería Mecánica", label: "Maestría en Ingeniería Mecánica" },
+  { value: "Maestría en Ingeniería Química", label: "Maestría en Ingeniería Química" },
+  { value: "Maestría en Logística Integral", label: "Maestría en Logística Integral" },
+  { value: "Especialización en eficiencia energética", label: "Especialización en eficiencia energética" },
+  { value: "Especialización en evaluación financiera de proyectos", label: "Especialización en evaluación financiera de proyectos" },
+  { value: "Especialización en finanzas", label: "Especialización en finanzas" },
+  { value: "Especialización en finanzas, preparación y evaluación de proyectos", label: "Especialización en finanzas, preparación y evaluación de proyectos" },
+  { value: "Especialización en gerencia de mantenimiento", label: "Especialización en gerencia de mantenimiento" },
+  { value: "Especialización en gestión ambiental", label: "Especialización en gestión ambiental" },
+  { value: "Especialización en gestión de activos", label: "Especialización en gestión de activos" },
+  { value: "Especialización en logística integral", label: "Especialización en logística integral" },
+  { value: "Especialización en manejo y gestión del agua", label: "Especialización en manejo y gestión del agua" },
+  { value: "Especialización en medio ambiente y geoinformática", label: "Especialización en medio ambiente y geoinformática" },
+  { value: "Especialización en refrigeración y climatización", label: "Especialización en refrigeración y climatización" },
+  { value: "Especialización en soldadura", label: "Especialización en soldadura" },
+  { value: "Especialización preparación y evaluación proyectos privados", label: "Especialización preparación y evaluación proyectos privados" }
+];
