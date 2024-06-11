@@ -11,11 +11,22 @@ const AdminProcesos = () => {
 
   const jwt = localStorage.getItem("jwt");
 
-  useEffect(() => {
-    dispatch(retrieveProcesos(jwt));
-  }, [])
+  const [loading, setLoading] = useState(true);
 
-  console.log("Procesos: ",procesos)
+  useEffect(() => {
+    const fetchProceso = async () => {
+      await dispatch(retrieveProcesos(jwt));
+      setLoading(false);
+    };
+
+    fetchProceso();
+  }, [dispatch]);
+
+  if (loading) {
+    return <div>Lading...</div>;
+  }
+
+  console.log("Procesos: ", procesos);
 
   const procesoEjemplo = procesos[0];
 
@@ -48,9 +59,10 @@ const AdminProcesos = () => {
   const rows = procesos.map((proceso) => ({
     ...proceso,
     id: proceso.id,
-    emprendedor: proceso.emprendedor.nombres+" "+proceso.emprendedor.apellidos,
-    emprendimiento: proceso.emprendimiento.nombre,
-    estadoProceso: proceso.estadoProceso.nombre,
+    emprendedor:
+      proceso?.emprendedor.nombres + " " + proceso.emprendedor.apellidos,
+    emprendimiento: proceso?.emprendimiento.nombre,
+    estadoProceso: proceso?.estadoProceso.nombre,
   }));
 
   return (
