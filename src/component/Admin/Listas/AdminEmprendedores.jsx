@@ -1,17 +1,24 @@
 import React from "react";
 import MenuAdmin from "../Menu/MenuAdmin";
 import DataTable from "./DataTable/DataTable";
-import Add from "./Add/Add";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { retrieveEmprendimientos } from "../../State/Emprendimiento/Action";
-import { emprendedor } from "./Emprendedor";
+import { retrieveEmprendedor } from "../../State/Emprendedor/Action";
 
 const AdminEmprendedores = () => {
+  const dispatch = useDispatch();
+
+  const { emprendedores } = useSelector((store) => store.emprendedor);
+
+  const jwt = localStorage.getItem("jwt");
+
+  useEffect(() => {
+    dispatch(retrieveEmprendedor(jwt));
+  }, []);
 
   const [open, setOpen] = React.useState(false);
 
-  const emprendedorEjemplo = emprendedor.emprendedores[0];
+  const emprendedorEjemplo = emprendedores[0];
 
   const columnasIgnoradas = [
     "resumen",
@@ -31,11 +38,15 @@ const AdminEmprendedores = () => {
         }))
     : [];
 
-  const rows = emprendedor.emprendedores.map((emprendedor) => ({
+  const rows = emprendedores.map((emprendedor) => ({
     ...emprendedor,
     id: emprendedor.id,
+    tipoDocumento: emprendedor.tipoDocumento.nombre,
+    vinculo: emprendedor.vinculo.nombre,
+    tipoPrograma: emprendedor.tipoPrograma.nombre,
+    estadoe: emprendedor.estadoe.nombre,
+    genero: emprendedor.genero.nombre,
   }));
-
 
   return (
     <section className="relative flex">

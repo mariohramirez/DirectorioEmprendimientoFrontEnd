@@ -27,6 +27,8 @@ import FormularioGuardado from "../Servicios/Formulario/FormularioGuardado";
 import FormularioRegistroEmprendimiento from "../Servicios/Formulario/FormularioRegistroEmprendimiento";
 import Novedad from "../Admin/Novedad/Novedad";
 import Usuario from "../Admin/Usuario/Usuario";
+import AdminProcesos from "../Admin/Listas/Procesos/AdminProcesos";
+import Proceso from "../Admin/Listas/Procesos/Proceso";
 
 export const DirectorioRoutes = () => {
   return (
@@ -50,7 +52,7 @@ export const DirectorioRoutes = () => {
         <Route path="/servicios/formulario/Registro/Profesional" element={<FormularioRegistroIndependiente />} />
         <Route path="/servicios/formulario/Registro/Emprendimiento" element={<FormularioRegistroEmprendimiento />} />
         <Route path="/servicios/formulario/Registro/Guardado" element={<FormularioGuardado />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin" element={<AdminProcesos />} />
         <Route
           path="/admin/emprendimientos"
           element={<AdminEmprendimientos />}
@@ -63,6 +65,7 @@ export const DirectorioRoutes = () => {
         <Route path="/admin/novedades/agregar" element={<WritePage />} />
         <Route path="/admin/usuarios" element={<AdminUsuarios />} />
         <Route path="/admin/usuarios/usuario/:id" element={<Usuario />} />
+        <Route path="/admin/proceso/:id" element={<Proceso />} />
         <Route path="/admin/emprendedores" element={<AdminEmprendedores />} />
         <Route path="/admin/emprendedores/emprendedor/:id" element={<Emprendedor />} />
         <Route

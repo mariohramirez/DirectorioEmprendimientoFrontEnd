@@ -30,6 +30,9 @@ const AdminEmprendimientos = () => {
     "nombreLogo",
     "descripcion",
     "informacionDeContacto",
+    "supertipo",
+    "segmentoClientes",
+    "ciudad",
   ]; // Agrega aquí las claves que deseas ignorar
 
   // Determinar las columnas basadas en las claves del emprendimiento seleccionado, ignorando las columnas especificadas
@@ -88,6 +91,12 @@ const AdminEmprendimientos = () => {
   const rows = emprendimiento.emprendimientos.map((emprendimiento) => ({
     ...emprendimiento,
     id: emprendimiento.id,
+    fundador: emprendimiento.fundador.nombres + " " + emprendimiento.fundador.apellidos,
+    nivelDeMadurez: emprendimiento.nivelDeMadurez.nombre,
+    estadoInterno: emprendimiento.estadoInterno.nombre,
+    estadoE: emprendimiento.estadoE.nombre,
+    formalizada: emprendimiento.formalizada ? "Si" : "No",
+    hayMujeres: emprendimiento.hayMujeres ? "Si" : "No",
   }));
 
   return (

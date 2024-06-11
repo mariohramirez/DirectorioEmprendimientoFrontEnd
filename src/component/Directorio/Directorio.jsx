@@ -8,13 +8,14 @@ import { useState } from "react";
 
 const filtro = [];
 const Directorio = () => {
-
   const dispatch = useDispatch();
   //const {emprendimiento} = useSelector((state) => state.emprendimiento);
-  const {emprendimiento} = useSelector(store => store);
-  console.log("Emprendimiento: ",emprendimiento);
+  const { emprendimiento } = useSelector((store) => store);
+  console.log("Emprendimiento: ", emprendimiento);
 
-  useEffect(() => {dispatch(retrieveEmprendimientos())},[])
+  useEffect(() => {
+    dispatch(retrieveEmprendimientos());
+  }, []);
 
   const [query, setQuery] = useState("");
 
@@ -23,7 +24,7 @@ const Directorio = () => {
   };
 
   const filteredEmprendimientos = emprendimiento.emprendimientos.filter((emprendimiento) => {
-    return emprendimiento.nombre.toLowerCase().includes(query.toLowerCase())
+    return emprendimiento.nombre.toLowerCase().includes(query.toLowerCase());
   });
 
   return (
@@ -31,7 +32,7 @@ const Directorio = () => {
       {/*Seccion con las card de los emprendimientos*/}
       <section className="relative flex flex-col justify-center items-center">
         {/*Barra de busqueda*/}
-        <BarraBusqueda handleInputChange={handleInputChange} query={query}/>
+        <BarraBusqueda handleInputChange={handleInputChange} query={query} />
         <div className="flex flex-wrap items-center justify-around gap-5 pt-10 w-[80vw] text-black">
           {
             /*Mapeo de los filtros de los emprendimientos*/
@@ -47,7 +48,6 @@ const Directorio = () => {
             filteredEmprendimientos.map((item) => (
               <EmprendimientoCard key={item.id} item={item} />
             ))
-            
           }
         </div>
       </section>

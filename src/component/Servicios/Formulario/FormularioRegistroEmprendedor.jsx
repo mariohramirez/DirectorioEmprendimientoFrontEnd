@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import styled from "@mui/material/styles/styled";
 import { useNavigate } from "react-router-dom";
-import { genero, programas, roles } from "./data";
+import { genero, programas, programasPosgrado, roles } from "./data";
 
 const CustomTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
@@ -44,7 +44,7 @@ const FormularioRegistroEmprendedor = () => {
     tipoPrograma: "Pregrado",
     programa: "",
     rol: "Nuevo",
-    genero: ""
+    genero: "",
   });
 
   const navigate = useNavigate();
@@ -60,13 +60,19 @@ const FormularioRegistroEmprendedor = () => {
     switch (formData.rol) {
       case "Emprendedor":
       case "Empresario":
-        navigate(`/servicios/formulario/Registro/Emprendimiento`, { state: { formData } });
+        navigate(`/servicios/formulario/Registro/Emprendimiento`, {
+          state: { formData },
+        });
         break;
       case "Independiente":
-        navigate(`/servicios/formulario/Registro/Profesional`, { state: { formData } });
+        navigate(`/servicios/formulario/Registro/Profesional`, {
+          state: { formData },
+        });
         break;
       default:
-        navigate(`/servicios/formulario/Registro/Emprendimiento`, { state: { formData } });
+        navigate(`/servicios/formulario/Registro/Emprendimiento`, {
+          state: { formData },
+        });
         break;
     }
   };
@@ -208,20 +214,20 @@ const FormularioRegistroEmprendedor = () => {
                 />
               </div>
               <div>
-                    <label>Genero</label>
-                    <select
-                      name="genero"
-                      value={formData.genero}
-                      onChange={handleChange}
-                      className="w-full bg-white border border-black hover:border-[#026937] focus:border-[#026937] focus:border-2 px-5 py-5 rounded-md"
-                    >
-                      {genero.map((opcion) => (
-                        <option key={opcion.value} value={opcion.value}>
-                          {opcion.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                <label>Genero</label>
+                <select
+                  name="genero"
+                  value={formData.genero}
+                  onChange={handleChange}
+                  className="w-full bg-white border border-black hover:border-[#026937] focus:border-[#026937] focus:border-2 px-5 py-5 rounded-md"
+                >
+                  {genero.map((opcion) => (
+                    <option key={opcion.value} value={opcion.value}>
+                      {opcion.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <div>
                 <label>Correo electronico del emprendedor</label>
                 <CustomTextField
@@ -324,11 +330,18 @@ const FormularioRegistroEmprendedor = () => {
                       onChange={handleChange}
                       className="w-full bg-white border border-black hover:border-[#026937] focus:border-[#026937] focus:border-2 px-5 py-5 rounded-md"
                     >
-                      {programas.map((opcion) => (
-                        <option key={opcion.value} value={opcion.value}>
-                          {opcion.label}
-                        </option>
-                      ))}
+                      {formData.tipoPrograma === "Posgrado" &&
+                        programasPosgrado.map((opcion) => (
+                          <option key={opcion.value} value={opcion.value}>
+                            {opcion.label}
+                          </option>
+                        ))}
+                      {formData.tipoPrograma === "Pregrado" &&
+                        programas.map((opcion) => (
+                          <option key={opcion.value} value={opcion.value}>
+                            {opcion.label}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <div>

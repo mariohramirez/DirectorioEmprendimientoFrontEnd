@@ -42,7 +42,6 @@ const StyledRadio = styled(Radio)({
 });
 
 const FormularioRegistroEmprendimiento = () => {
-
   const initialValues = {
     nombres: "",
     apellidos: "",
@@ -73,9 +72,8 @@ const FormularioRegistroEmprendimiento = () => {
     logo: "",
     supertipo: "",
     sectores: "",
-    servicios: ""
+    servicios: "",
   };
-  
 
   const location = useLocation();
   const formData = location.state?.formData;
@@ -146,7 +144,7 @@ const FormularioRegistroEmprendimiento = () => {
             const updatedFormValues = {
               ...formValues,
               img_url: downloadURL,
-            };  
+            };
             setFormValues(updatedFormValues);
             setOpen(!open);
           });
@@ -170,8 +168,8 @@ const FormularioRegistroEmprendimiento = () => {
         setOpen(!open);
         const updatedFormValues = {
           ...formValues,
-          img_url: "", 
-        };  
+          img_url: "",
+        };
         setFormValues(updatedFormValues);
       })
       .catch((error) => {
@@ -202,35 +200,36 @@ const FormularioRegistroEmprendimiento = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Info formulario anterior: ", formData)
+    console.log("Info formulario anterior: ", formData);
     console.log(formValues);
-    console.log("Nombres emprendedor: ", formData.nombres)
-    initialValues.nombres = formData.nombres
-    initialValues.apellidos = formData.apellidos
-    initialValues.tipoDoc = formData.tipoDocumento
-    initialValues.numeroDoc = formData.numeroDocumento
-    initialValues.correoE = formData.correo
-    initialValues.programa = formData.programa
-    initialValues.telContac = formData.telefono
-    initialValues.vinculo = formData.vinculo 
-    initialValues.tipoPrograma = formData.tipoPrograma
-    initialValues.dependencia = formData.dependencia
-    initialValues.genero = formData.genero
-    initialValues.estadoe = "Inscrito"
-    initialValues.rol = formData.rol
-    initialValues.nombre = formValues.nombre
-    initialValues.informacionDeContacto.email=formValues.correo
-    initialValues.informacionDeContacto.telefono=formValues.telefono 
-    initialValues.informacionDeContacto.twitter="" 
-    initialValues.informacionDeContacto.instagram="" 
-    initialValues.informacionDeContacto.whatsapp="" 
-    initialValues.informacionDeContacto.linkedin="" 
-    initialValues.informacionDeContacto.paginaweb="" 
-    initialValues.logo=formValues.img_url
-    initialValues.supertipo="Empresa"
-    initialValues.servicios=formValues.servicios
-    console.log("Info a ser pasada", initialValues)
-    dispatch(createInscripcion({ inscripcionData: initialValues }))
+    console.log("Nombres emprendedor: ", formData.nombres);
+    initialValues.nombres = formData.nombres;
+    initialValues.apellidos = formData.apellidos;
+    initialValues.tipoDoc = formData.tipoDocumento;
+    initialValues.numeroDoc = formData.numeroDocumento;
+    initialValues.correoE = formData.correo;
+    initialValues.programa = formData.programa;
+    initialValues.telContac = formData.telefono;
+    initialValues.vinculo = formData.vinculo;
+    initialValues.tipoPrograma = formData.tipoPrograma;
+    initialValues.dependencia = formData.dependencia;
+    initialValues.genero = formData.genero;
+    initialValues.estadoe = "Inscrito";
+    initialValues.nombre = formData.nombre;
+    initialValues.rol = formData.rol;
+    initialValues.nombre = formValues.nombre;
+    initialValues.informacionDeContacto.email = formValues.correo;
+    initialValues.informacionDeContacto.telefono = formValues.telefono;
+    initialValues.informacionDeContacto.twitter = "";
+    initialValues.informacionDeContacto.instagram = "";
+    initialValues.informacionDeContacto.whatsapp = "";
+    initialValues.informacionDeContacto.linkedin = "";
+    initialValues.informacionDeContacto.paginaweb = "";
+    initialValues.logo = formValues.img_url;
+    initialValues.supertipo = "Empresa";
+    initialValues.servicios = formValues.servicios;
+    console.log("Info a ser pasada", initialValues);
+    dispatch(createInscripcion({ inscripcionData: initialValues }));
     navigate(`/servicios/formulario/Registro/Guardado`);
   };
 
@@ -327,7 +326,7 @@ const FormularioRegistroEmprendimiento = () => {
                 margin="normal"
               />
             </div>
-          {/*  <div>
+            {/*  <div>
               <label>
                 Usuarios de las redes sociales (Visible en el directorio)
               </label>
@@ -358,89 +357,66 @@ const FormularioRegistroEmprendimiento = () => {
             </div>
             <div>
               <label>
-                Sube por favor el logo de tu emprendimiento: (Visible en el directorio)
+                Sube por favor el logo de tu emprendimiento: (Visible en el
+                directorio)
               </label>
-              <RadioGroup
-                required
-                name="logo"
-                value={formValues.logo}
-                onChange={handleChange}
-              >
-                <div className="flex items-center justify-center align-middle gap-5">
-                  <span className="text-black pl-[50px]">
-                    Elige una imagen:{" "}
-                  </span>
-                  <input
-                    type="text"
-                    placeholder="Archivo"
-                    value={fileName}
-                    readOnly
-                    className="border-[1px] border-solid border-black text-[12px] rounded-none outline-none bg-white text-black"
-                  />
-                  <input
-                    type="file"
-                    id="image"
-                    style={{ display: "none" }}
-                    onChange={handleFileChange}
-                  />
-                  <div
-                    className="flex items-center bg-[rgb(2,105,55)] rounded-sm
+              <div className="flex items-center justify-center align-middle gap-5">
+                <span className="text-black pl-[50px]">Elige una imagen: </span>
+                <input
+                  type="text"
+                  placeholder="Archivo"
+                  value={fileName}
+                  readOnly
+                  className="border-[1px] border-solid border-black text-[12px] rounded-none outline-none bg-white text-black"
+                />
+                <input
+                  type="file"
+                  id="image"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+                <div
+                  className="flex items-center bg-[rgb(2,105,55)] rounded-sm
                         text-lg transition duration-300 ease-in-out hover:bg-[#8DC63F] cursor-pointer"
-                    style={{ boxShadow: "0px 4px 5px 0px rgba(0, 0, 0, 0.7)" }}
-                    title="imagen"
-                    name="imagen"
-                  >
-                    <div className="mx-4 my-2 flex flex-row gap-[10px] items-center justify-center">
-                      <label htmlFor="image" className=" cursor-pointer">
-                        <span className="font-roboto-slab text-base cursor-pointer">
-                          Subir imagen
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    onClick={handleDelete}
-                    className="flex items-center bg-[rgb(2,105,55)] rounded-sm
-                        text-lg transition duration-300 ease-in-out hover:bg-[#8DC63F] cursor-pointer"
-                    style={{ boxShadow: "0px 4px 5px 0px rgba(0, 0, 0, 0.7)" }}
-                    title="imagen"
-                    name="imagen"
-                  >
-                    <div className="mx-4 my-2 flex flex-row gap-[10px] items-center justify-center">
-                      <span className="font-roboto-slab text-base">
-                        Eliminar imagen{" "}
+                  style={{ boxShadow: "0px 4px 5px 0px rgba(0, 0, 0, 0.7)" }}
+                  title="imagen"
+                  name="imagen"
+                >
+                  <div className="mx-4 my-2 flex flex-row gap-[10px] items-center justify-center">
+                    <label htmlFor="image" className=" cursor-pointer">
+                      <span className="font-roboto-slab text-base cursor-pointer">
+                        Subir imagen
                       </span>
-                    </div>
+                    </label>
                   </div>
                 </div>
-                {open && (
-                  <div className="flex flex-col items-center justify-center align-middle gap-5 pl-[50px]">
-                    <img src={media} alt="" className="w-[50%]" />
-                    <a
-                      href={media}
-                      className="text-blue-600 underline"
-                      target="_blank"
-                    >
-                      {getShortLink(media)}
-                    </a>
+                <div
+                  onClick={handleDelete}
+                  className="flex items-center bg-[rgb(2,105,55)] rounded-sm
+                        text-lg transition duration-300 ease-in-out hover:bg-[#8DC63F] cursor-pointer"
+                  style={{ boxShadow: "0px 4px 5px 0px rgba(0, 0, 0, 0.7)" }}
+                  title="imagen"
+                  name="imagen"
+                >
+                  <div className="mx-4 my-2 flex flex-row gap-[10px] items-center justify-center">
+                    <span className="font-roboto-slab text-base">
+                      Eliminar imagen{" "}
+                    </span>
                   </div>
-                )}
-                <FormControlLabel
-                  value="No"
-                  control={<StyledRadio />}
-                  label="No tengo logo"
-                />
-                <FormControlLabel
-                  value="Ya"
-                  control={<StyledRadio />}
-                  label="Ya subí el logo"
-                />
-                <FormControlLabel
-                  value="No pude subirlo"
-                  control={<StyledRadio />}
-                  label="No pude subirlo"
-                />
-              </RadioGroup>
+                </div>
+              </div>
+              {open && (
+                <div className="flex flex-col items-center justify-center align-middle gap-5 pl-[50px]">
+                  <img src={media} alt="" className="w-[50%]" />
+                  <a
+                    href={media}
+                    className="text-blue-600 underline"
+                    target="_blank"
+                  >
+                    {getShortLink(media)}
+                  </a>
+                </div>
+              )}
             </div>
             <div>
               <label>

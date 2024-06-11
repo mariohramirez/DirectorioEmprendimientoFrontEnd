@@ -5,7 +5,7 @@ export const menu = [
         listItems: [
             {
                 id: 1,
-                title: "Inicio",
+                title: "Procesos",
                 icon: "HomeIcon",
                 to: "/admin",
             },

@@ -8,7 +8,7 @@ const initialState = {
     
 };
 
-const emprendimientoReducer = (state = initialState, action) => {
+const emprendedorReducer = (state = initialState, action) => {
     switch (action.type) 
     {
         case actionTypes.CREATE_EMPRENDEDOR_REQUEST:
@@ -54,4 +54,4 @@ const emprendimientoReducer = (state = initialState, action) => {
     }
 };
 
-export default emprendimientoReducer;
+export default emprendedorReducer;

@@ -8,7 +8,6 @@ const EmprendimientoCard = ({ item }) => {
   const navigate = useNavigate();
 
   const extractWhatsapp = (url) => {
-    
     return url;
   };
 
@@ -20,12 +19,14 @@ const EmprendimientoCard = ({ item }) => {
       <div className="relative p-4 flex flex-col justify-between items-center">
         <img
           className="w-auto h-[8rem] object-cover"
-          src="/png/Logos/logoipsum-300.png"
+          src={item.nombreLogo}
           alt="Logo"
         />
       </div>
-      <div className="bg-[#026937] p-4 textPart lg:flex flex-col justify-between items-center">
+      <div className="bg-[#026937] p-4 textPart lg:flex flex-col items-center gap-2">
         <p className="font-semibold text-lg">{item.nombre}</p>
+        <p className="text-sm">Programa: {item.fundador.programa}</p>
+        <p className="text-sm">Sector: {item.sector}</p>
         <p className="text-sm text-center">{item.resumen}</p>
         <nav className="flex flex-row gap-10 pt-2">
           {item.informacionDeContacto.whatsapp && (
@@ -41,21 +42,24 @@ const EmprendimientoCard = ({ item }) => {
               <WhatsAppIcon />
             </motion.a>
           )}
-          {item.informacionDeContacto.linkedin &&(
-          <motion.a
-            href="https://www.linkedin.com"
-            target="_blank"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.9 }}
-            className="w-9"
-          >
-            <LinkedIcon />
-          </motion.a>)}
+          {item.informacionDeContacto.linkedin && (
+            <motion.a
+              href="https://www.linkedin.com"
+              target="_blank"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-9"
+            >
+              <LinkedIcon />
+            </motion.a>
+          )}
         </nav>
       </div>
       <div className=" bg-[#137598] p-2 lg:flex flex-col justify-center items-center">
         <p
-          onClick={() => navigate(`/directorio/emprendimiento/${item.nombre}/${item.id}`)}
+          onClick={() =>
+            navigate(`/directorio/emprendimiento/${item.nombre}/${item.id}`)
+          }
           className=" cursor-pointer hover:text-black"
         >
           Ver mas

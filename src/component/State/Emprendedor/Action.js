@@ -18,30 +18,32 @@ import {
     DELETE_ALL_EMPRENDEDEDORES
 } from "./ActionType";
 
-export const retrieveEmprendedor = () => {
-    return async (dispatch) => {
-        dispatch({type: RETRIEVE_EMPRENDEDOR_REQUEST});
-        try {
-            const { data } = await api.get("/api/emprendedor",);
-            dispatch({type: RETRIEVE_EMPRENDEDOR_SUCCESS, payload: data});
-            console.log("Todos los emprendedores", data);
-        } catch (error) {
-            console.log("catch error", error);
-            console.log({type: RETRIEVE_EMPRENDEDOR_FAILURE, payload: error});
-        }
+export const retrieveEmprendedor = (jwt) => async (dispatch) => {
+    dispatch({ type: RETRIEVE_EMPRENDEDOR_REQUEST });
+    try {
+        const { data } = await api.get("/api/admin/emprendedor", {
+            headers: {
+                Authorization: `Bearer ${jwt}`
+            }
+        })
+        dispatch({ type: RETRIEVE_EMPRENDEDOR_SUCCESS, payload: data });
+        console.log("Todos los emprendedores", data);
+    } catch (error) {
+        console.log("catch error", error);
+        console.log({ type: RETRIEVE_EMPRENDEDOR_FAILURE, payload: error });
     }
-};
+}
 
 export const retrieveEmprendimientoById = (reqData) => {
     return async (dispatch) => {
-        dispatch({type: GET_EMPRENDEDOR_BY_ID_REQUEST});
+        dispatch({ type: GET_EMPRENDEDOR_BY_ID_REQUEST });
         try {
-            const response = await api.get(`/api/emprendedor/${reqData.emprendimientoId}`, );
-            dispatch({type: GET_EMPRENDEDOR_BY_ID_SUCCESS, payload: response.data});
+            const response = await api.get(`/api/emprendedor/${reqData.emprendimientoId}`,);
+            dispatch({ type: GET_EMPRENDEDOR_BY_ID_SUCCESS, payload: response.data });
             console.log("Todos los emprendedores");
         } catch (error) {
             console.log("catch error", error);
-            console.log({type: GET_EMPRENDEDOR_BY_ID_FAILURE, payload: error});
+            console.log({ type: GET_EMPRENDEDOR_BY_ID_FAILURE, payload: error });
         }
     }
 };
