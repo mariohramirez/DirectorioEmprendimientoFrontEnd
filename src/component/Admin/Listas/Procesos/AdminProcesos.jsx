@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MenuAdmin from "../../Menu/MenuAdmin";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,7 +62,7 @@ const AdminProcesos = () => {
     emprendedor:
       proceso?.emprendedor.nombres + " " + proceso.emprendedor.apellidos,
     emprendimiento: proceso?.emprendimiento.nombre,
-    estadoProceso: proceso?.estadoProceso.nombre,
+    estadoProceso: proceso?.estadoProceso?.nombre,
   }));
 
   return (
