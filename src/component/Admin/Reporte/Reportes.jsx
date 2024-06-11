@@ -3,11 +3,14 @@ import MenuAdmin from "../Menu/MenuAdmin";
 import PieChartBox from "./PieChartBox/PieChartBox";
 import { reportesPrueba } from "./data";
 import { useDispatch, useSelector } from "react-redux";
-import { retrieveReporteSectores } from "../../State/Reportes/Action";
+import { retrieveReporteGenero, retrieveReportePrograma, retrieveReporteSectores } from "../../State/Reportes/Action";
 
 const Reportes = () => {
   const dispatch = useDispatch();
   const { reportes } = useSelector((store) => store.reporte);
+  const { reportesGenero } = useSelector((store) => store.reporte);
+  const { reportesPrograma } = useSelector((store) => store.reporte);
+
 
   const jwt = localStorage.getItem("jwt");
 
@@ -15,9 +18,39 @@ const Reportes = () => {
     dispatch(retrieveReporteSectores(jwt));
   }, []);
 
+  useEffect(() => {
+    dispatch(retrieveReportePrograma(jwt));
+  }, []);
+
+  useEffect(() => {
+    dispatch(retrieveReporteGenero(jwt));
+  }, []);
+
+  const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   const Sectores = reportes.map((item) => ({
     name: item.sector,
     value: item.count,
+    color: getRandomColor(),
+  }));
+
+  const Genero = reportesGenero.map((item) => ({
+    name: item.genero,
+    value: item.count,
+    color: getRandomColor(),
+  }));
+
+  const Programa = reportesPrograma.map((item) => ({
+    name: item.programa,
+    value: item.count,
+    color: getRandomColor(),
   }));
 
   return (
@@ -37,7 +70,7 @@ const Reportes = () => {
           <div className="p-[20px] rounded-[10px] border-solid border-[1px] border-[#026937] col-span-1 row-span-1">
             <PieChartBox
               slug="Emprendedores por Genero"
-              data={reportesPrueba[0].tipoDatos}
+              data={Genero}
             />
           </div>
           <div className="p-[20px] rounded-[10px] border-solid border-[1px] border-[#026937] col-span-1 row-span-1">
@@ -49,7 +82,7 @@ const Reportes = () => {
           <div className="p-[20px] rounded-[10px] border-solid border-[1px] border-[#026937] col-span-1 row-span-1">
             <PieChartBox
               slug="Emproendimientos por Programa Académico"
-              data={reportesPrueba[2].tipoDatos}
+              data={Programa}
             />
           </div>
         </div>

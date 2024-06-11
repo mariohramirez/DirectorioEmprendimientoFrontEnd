@@ -16,22 +16,20 @@ const style = {
   p: 4,
 };
 
-export const Auth = () => {
-  const location = useLocation();
+const Auth = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
-  const handleOnCLose = () => {
+
+  const handleOnClose = () => {
+    onClose();
     navigate("/");
   };
+
   return (
-    <>
-      <Modal open={location.pathname === "/login"
-      } 
-      onClose={handleOnCLose}>
-        <Box sx={style}>
-          {location.pathname === "/login" ? <LoginForm />: null}
-        </Box>
-      </Modal>
-    </>
+    <Modal open={isOpen} onClose={handleOnClose}>
+      <Box sx={style}>
+        <LoginForm />
+      </Box>
+    </Modal>
   );
 };
 
