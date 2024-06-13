@@ -1,31 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "./Carousel";
 import ListaNoticia from "./ListaNoticia";
-import { novedad } from "./Novedad";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { retrieveNovedades } from "../State/Novedades/Action";
 
-{
-  /*Arreglo de imagenes a partir de las cuales se crean las slides*/
-}
-const slides = [
-  "/jpg/FotosMiniatura/fotoNoticia.jpg",
-  "/jpg/FotosMiniatura/fotoNoticia.jpg",
-  "/jpg/FotosMiniatura/fotoNoticia.jpg",
-];
+const preloadImage = (src) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = resolve;
+    img.onerror = reject;
+  });
+};
+
 const Noticias = () => {
   const dispatch = useDispatch();
   const { novedades } = useSelector((store) => store.novedad);
+  const [loading, setLoading] = useState(true); // Loading state
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [filteredNovedad, setFilteredNovedad] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(retrieveNovedades());
-  }, []);
-
-  console.log("Novedades: ", novedades);
+    dispatch(retrieveNovedades()).then(() => setLoading(false)); // Set loading to false after fetching data
+  }, [dispatch]);
 
   const slidesImages = [
     novedades[0]?.img_url,
@@ -41,20 +40,23 @@ const Noticias = () => {
 
   const slidesId = [novedades[0]?.id, novedades[1]?.id, novedades[2]?.id];
 
-  const slidesCategoria = [novedades[0]?.categoria, novedades[1]?.categoria, novedades[2]?.categoria];
+  const slidesCategoria = [
+    novedades[0]?.categoria,
+    novedades[1]?.categoria,
+    novedades[2]?.categoria,
+  ];
 
-  const slidesTitulo = [novedades[0]?.titulo, novedades[1]?.titulo, novedades[2]?.titulo];
-
+  const slidesTitulo = [
+    novedades[0]?.titulo,
+    novedades[1]?.titulo,
+    novedades[2]?.titulo,
+  ];
 
   const formattedSlidesTexts = slidesTexts.map((descripcion) =>
     descripcion
       ? new DOMParser().parseFromString(descripcion, "text/html").body.innerText
       : ""
   );
-
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [filteredNovedad, setFilteredNovedad] = useState([]);
-  const navigate = useNavigate();
 
   const handleClick = (category) => {
     setSelectedCategory(category);
@@ -74,7 +76,23 @@ const Noticias = () => {
           .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
       : novedades;
     setFilteredNovedad(filtered);
-  }, [selectedCategory]);
+  }, [selectedCategory, novedades]);
+
+  useEffect(() => {
+    const loadImages = async () => {
+      const imagePromises = slidesImages.map((src) => preloadImage(src));
+      await Promise.all(imagePromises);
+      setLoading(false);
+    };
+
+    if (novedades.length) {
+      loadImages();
+    }
+  }, [slidesImages, novedades]);
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading message or spinner
+  }
 
   return (
     <div className="">
@@ -143,7 +161,7 @@ const Noticias = () => {
           {
             /*Mapeo de las noticias donde cada item crea una card de noticia*/
             filteredNovedad.map((item) => (
-              <ListaNoticia novedad={item} />
+              <ListaNoticia key={item.id} novedad={item} />
             ))
           }
         </div>

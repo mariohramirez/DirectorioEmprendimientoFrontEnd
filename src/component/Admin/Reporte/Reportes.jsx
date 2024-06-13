@@ -67,12 +67,12 @@ const Reportes = () => {
             gridTemplateRows: "minmax(200px, auto)",
           }}
         >
-          <div className="p-[20px] rounded-[10px] border-solid border-[1px] border-[#026937] col-span-1 row-span-1">
+        {/*  <div className="p-[20px] rounded-[10px] border-solid border-[1px] border-[#026937] col-span-1 row-span-1">
             <PieChartBox
               slug="Emprendedores por Genero"
               data={Genero}
             />
-          </div>
+          </div>*/}
           <div className="p-[20px] rounded-[10px] border-solid border-[1px] border-[#026937] col-span-1 row-span-1">
             <PieChartBox
               slug="Emprendimientos por Sector"
